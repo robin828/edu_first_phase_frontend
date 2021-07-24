@@ -50,7 +50,7 @@ const ShowPreviousPracticeTable = () => {
         {
         practiceResult && questions && questions.length>0 ? <ResultPage questions={questions} selectedAnswer={selectedAnswer} status="old" /> : 
         <div style={{marginTop: '2rem'}} >
-            <HeadingComponent imagePath={Graph} heading="See Previous Results" />
+            <HeadingComponent imagePath={Graph} heading="See Previous" />
             <Grid
                 container
                 direction="row"
