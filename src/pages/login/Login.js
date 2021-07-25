@@ -71,7 +71,7 @@ function Login() {
           />
         </Grid>
         <Grid item>
-          <Typography className={classes.schoolName}>School Edu</Typography>
+          <Typography className={classes.schoolName}>Online Edu</Typography>
         </Grid>
       </Grid>
 
