@@ -1,5 +1,6 @@
 import Homework from "../Homework";
 import Dashboard from "../Dashboard";
+import Performance from "../Performance";
 
 export const teacherRoutes = [
     {
@@ -8,7 +9,11 @@ export const teacherRoutes = [
     },
     {
         path: "/teacher/homework",
-        component: Homework 
+        component: Homework  
+    },
+    {
+        path: "/teacher/performance",
+        component: Performance 
     },
     
 ]

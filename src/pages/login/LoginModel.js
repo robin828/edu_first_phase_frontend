@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { useState } from 'react'
 import theme from "../../ui/theme";
 import indiaflag from "../../img/indiaflag.svg";
@@ -31,7 +33,8 @@ function getModalStyle() {
 const useStyles = makeStyles({
     paper: {
         position: "absolute",
-        width: 400,
+        width: 300,
+        textAlign: 'center',
         backgroundColor: theme.palette.background.paper,
         border: "2px solid #000",
         boxShadow: theme.shadows[5],
@@ -76,14 +79,12 @@ const LoginModel = ({ open, setOpen, user }) => {
     };
 
     const handleSubmit = () => {
-        console.log(user);
         if (user === "Student") {
             dispatch(studentLoginApi({ userName, password }));
             localStorage.setItem('studentUsername', userName);
             history.push('/student/dashboard');
         }
         if (user === "Teacher") {
-            console.log("*******teacher******");
             dispatch(teacherLoginApi({ userName, password }));
             localStorage.setItem('teacherUserName', userName);
             history.push('/teacher/dashboard')
@@ -111,7 +112,7 @@ const LoginModel = ({ open, setOpen, user }) => {
                 <Grid item className={classes.texts}>
                     <Typography variant="h3">Login</Typography>
                 </Grid>
-                <Grid container direction="row">
+                {/* <Grid container direction="row">
                     <Grid item>
                         <img src={indiaflag} alt-={indiaflag} />
                     </Grid>
@@ -121,7 +122,7 @@ const LoginModel = ({ open, setOpen, user }) => {
                 </Grid>
                 <Grid item>
                     <Typography className={classes.texts}>Phone Number</Typography>
-                </Grid>
+                </Grid> */}
                 <Grid item>
                     <TextField
                         id="standard-multiline-flexible"

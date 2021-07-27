@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { useState } from 'react'
 import PieChart from './GraphComponent/PieChart'
 import { makeStyles } from '@material-ui/core/styles'
@@ -6,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import { saveResult } from '../../../redux/service/studentService'
 import { showHeader } from '../../../redux/slice/loginSlice'
 import { useHistory } from 'react-router-dom'
+import ReviewPage from '../ReviewPage'
 
 const useStyles = makeStyles({
     mainDiv: {
@@ -33,11 +36,12 @@ const useStyles = makeStyles({
 })
 
 const ResultPage = ({ selectedAnswer, questions, status }) => {
-    console.log(selectedAnswer, questions, '^^')
+    // console.log(selectedAnswer, questions, '^^')
     const classes = useStyles()
     const dispatch = useDispatch()
     const history = useHistory()
     const [type, setType] = useState('Self')
+    const [reviewQuestion, setReviewQuestion] = useState(-1);
     const incorrect = []
     const correct = []
     const leave = []
@@ -48,17 +52,23 @@ const ResultPage = ({ selectedAnswer, questions, status }) => {
         if (selectedAnswer[index]) {
             if (question.correctAnswer === selectedAnswer[index][0]) {
                 correct.push(index)
+                // console.log(selectedAnswer[index], index,'correct');
             } else {
                 incorrect.push(index)
+                // console.log(selectedAnswer[index], index,'incorrect');
             }
         } else {
             leave.push(index)
         }
     })
     const handleQuestion = (question) => {
-        console.log(question)
+        console.log(selectedAnswer, '%%%%%$^^')
+        
+        setReviewQuestion(question)
         console.log('hi')
+        console.log(questions)
     }
+    console.log(reviewQuestion, '%%%')
 
     const handleResult = () => {
         let payload
@@ -131,7 +141,7 @@ const ResultPage = ({ selectedAnswer, questions, status }) => {
                                 onClick={() => handleQuestion(inc)}
                                 className={classes.button}
                             >
-                                {inc}
+                                {inc+1}
                             </Button>
                             {(index + 1) % 4 === 0 && <br />}
                         </>
@@ -146,7 +156,7 @@ const ResultPage = ({ selectedAnswer, questions, status }) => {
                                 onClick={() => handleQuestion(inc)}
                                 className={classes.button}
                             >
-                                {inc}
+                                {inc+1}
                             </Button>
                             {(index + 1) % 4 === 0 && <br />}
                         </>
@@ -161,13 +171,15 @@ const ResultPage = ({ selectedAnswer, questions, status }) => {
                                 onClick={() => handleQuestion(inc)}
                                 className={classes.button}
                             >
-                                {inc}
+                                {inc+1}
                             </Button>
                             {(index + 1) % 4 === 0 && <br />}
                         </>
                     ))}
                 </Grid>
             </Grid>
+
+            {reviewQuestion>=0 && selectedAnswer[reviewQuestion] && <ReviewPage question={questions[reviewQuestion]} selectedAnswer={selectedAnswer[reviewQuestion][0]} /> }
 
             <div style={{ textAlign: 'center', marginTop: '2rem' }}>
                 <Button onClick={handleResult} className={classes.button}>

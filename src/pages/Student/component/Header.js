@@ -75,6 +75,12 @@ export default function Header({setPractice}) {
     if(window.location.pathname === "/student/setting" && value !== 6 ) setValue(6);
   }, [value]);
 
+  useEffect(() => {
+    console.log("hi454")
+
+  }, [])
+
+
 
   const drawer = (
       <>

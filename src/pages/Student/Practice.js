@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { useEffect, useState } from "react";
 import TopComponent from "./component/TopComponent";
 import MultiSelectDropDown from "../Student/component/MultiSelectDropDown";
@@ -127,10 +129,10 @@ const Practice = () => {
           <Grid item>
             <SingleSelect optionForUser={questions} selectLabel="Question" setVariable={setNoOfQuestions} />
           </Grid>
-          <Grid item>
-            <Button type="submit" > Search</Button>
-          </Grid>
         </Grid>
+        <div styles={{textAlign: 'center'}}>
+            <Button type="submit" className={classes.button} > Search</Button>
+          </div>
       </form>
       <ShowPreviousPracticeTable />
       </>

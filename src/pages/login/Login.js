@@ -22,8 +22,6 @@ const useStyles = makeStyles({
     marginTop: "2rem",
   },
   help: {
-    marginRight: "5px",
-    marginLeft: "5px",
     color: "white",
     fontWeight: 800,
   },
@@ -34,6 +32,13 @@ const useStyles = makeStyles({
   divider: {
     backgroundColor: theme.palette.background.paper,
     color: theme.palette.text.secondary,
+  },
+  cardComp: {
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: '.5rem'
+    },
+    margin: '10px',
+    border: 'red 2px solid'
   }
 });
 
@@ -41,7 +46,6 @@ function Login() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState("");
-  console.log("ye login me h")
 
   return (
     <>
@@ -49,7 +53,8 @@ function Login() {
       style={{
         background:
           "linear-gradient(to right, #f4a261, #f2995d, #f08f59, #ee8656, #eb7c53, #eb7f52, #ea8251, #ea8550, #eb9552, #eba557, #eab55f, #e9c46a)",
-        height: "100vh",
+        height: 'max-content',
+        minHeight: '100vh'
       }}
     >
       <Grid container direction="row" justify="flex-end" alignItems="center">
@@ -82,10 +87,13 @@ function Login() {
         alignItems="center"
         className={classes.loginGrid}
       >
-        <CardComponent image={teacher} userDetail={"Teacher"} setOpen={setOpen} setUser={setUser} />
-        <CardComponent image={student} userDetail={"Student"} setOpen={setOpen} setUser={setUser} />
+        <CardComponent className={classes.cardComp} image={teacher} userDetail={"Teacher"} setOpen={setOpen} setUser={setUser} />
+        <CardComponent className={classes.cardComp} image={student} userDetail={"Student"} setOpen={setOpen} setUser={setUser} />
       </Grid> 
+      <div style={{border: 'red'}} >
       <ModelComponent open={open} setOpen={setOpen} user={user} />
+
+      </div>
     </div>
     </>
   );

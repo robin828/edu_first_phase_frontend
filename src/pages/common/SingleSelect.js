@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
+/*eslint-disable*/
+
 
 import Select from 'react-select';
-import chroma from 'chroma-js';
 import { useDispatch } from 'react-redux';
 // import { setNoOfQuestions } from '';
 
 
-export default function SingleSelect({selectLabel, optionForUser, setVariable}) {
+export default function SingleSelect({selectLabel, optionForUser, setVariable, disable}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
   const dispatch = useDispatch()
+  console.log(disable, '^^^')
 
 
   const style = {
@@ -57,6 +59,7 @@ const customStyles = {
         onChange={handleChange}
         onMenuOpen={onMenuOpen}
         onMenuClose={onMenuClose}
+        isDisabled={disable}
         options={optionForUser}
         styles={customStyles}
       />

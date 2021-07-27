@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import { ThemeProvider } from "@material-ui/core/styles";
 import React from "react";
 import theme from "./ui/theme";

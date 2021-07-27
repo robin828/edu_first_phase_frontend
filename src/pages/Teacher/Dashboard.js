@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, {useEffect, useState} from 'react';
 import TopComponent from '../Student/component/TopComponent';
 import Grid from '@material-ui/core/Grid';
@@ -55,9 +57,9 @@ const Dashboard = () => {
 
     // console.log(teacherData)
 
-    if(!teacherData) {
-        return null;
-    }
+    // if(!teacherData) {
+    //     return null;
+    // }
 
     // const handleChange = (event) => {
     //     setStandard(event.target.value);

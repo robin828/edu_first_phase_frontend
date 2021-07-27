@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React from 'react';
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -19,7 +21,7 @@ const useStyles = makeStyles({
 		
 	},
 });
-const CardComponent = ({teacherAnnouncement}) => {
+const CardComponent = ({}) => {
 	const classes = useStyles();
 
 
@@ -27,87 +29,17 @@ const CardComponent = ({teacherAnnouncement}) => {
 		<>
 			<CardContent className={classes.paperGrid} >
 				<Typography gutterBottom variant="h5" component="h2">
-					Rohan
+					Your Performance
 				</Typography >
-				{
+				{/* {
 					teacherAnnouncement ? 
 						<Typography variant="body1" color="textSecondary" component="p">
 							{teacherAnnouncement.announcement}
 						</Typography>
 					 : <Typography variant="body2" color="textSecondary" component="p">
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at - 
-					 Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
-					Good at -  Good at -  Good at -  Good at -  Good at - Good at -  Good at Good at - Good at -  Good at -  Good at -  Good at -  Good at -  Good at -
-                Bad at -
+					
 				</Typography>
-				}
+				} */}
 				
 			</CardContent>
 		</>
