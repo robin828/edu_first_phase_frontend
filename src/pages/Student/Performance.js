@@ -120,6 +120,7 @@ const Performance = () => {
         // console.log('hi')
         console.log(selectedChapter, selectedExam, selectedSubject)
         getChapterWisePerformance({
+            userName: localStorage.getItem('studentUsername'),
             selectedChapter,
             selectedExam,
             selectedSubject,

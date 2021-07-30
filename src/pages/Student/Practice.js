@@ -90,13 +90,8 @@ const Practice = () => {
     }
   }
 
-  const questions = [
-    {label: '5Q', value: '5'},
-    {label: '10Q', value: '10'},
+  const questions = [,
     {label: '20Q', value: '20'},
-    {label: '30Q', value: '30'},
-    {label: '40Q', value: '40'},
-    {label: '50Q', value: '50'},
   ]
   const findQuestions = (e) => {
     e.preventDefault();
@@ -104,7 +99,6 @@ const Practice = () => {
     setTestInstruction(true)
     dispatch(getQuestions({selectedSubject, className: 'X', selectedChapter, selectedExam, noOfQuestions}));
   }
-
 
   return (
     <>
@@ -131,7 +125,7 @@ const Practice = () => {
           </Grid>
         </Grid>
         <div styles={{textAlign: 'center'}}>
-            <Button type="submit" className={classes.button} > Search</Button>
+            <Button type="submit" className={classes.button}> Search</Button>
           </div>
       </form>
       <ShowPreviousPracticeTable />

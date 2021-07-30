@@ -31,8 +31,8 @@ export const getTeacherQuestions = async () => {
     // return await Axios.get(`http://eduprodfirstphasebackend-env.eba-fi5wgagu.us-east-1.elasticbeanstalk.com/api/student/teacher/question?userName=${localStorage.getItem('studentUsername')}`);
 }
 
-export const getChapterWisePerformance = async ({selectedChapter, selectedExam, selectedSubject}) => {
-    return await Axios.get(`http://localhost:9000/api/student/performance/chapterwise?userName=${localStorage.getItem('studentUsername')}&exam=${selectedExam}&subject=${selectedSubject}&chapter=${selectedChapter}`);
+export const getChapterWisePerformance = async ({userName, selectedChapter, selectedExam, selectedSubject}) => {
+    return await Axios.get(`http://localhost:9000/api/student/performance/chapterwise?userName=${localStorage.getItem('studentUsername')}&exam=${selectedExam}&subject=${selectedSubject}&chapter=${selectedChapter}&userName=${userName}`);
     // return await Axios.get(`http://eduprodfirstphasebackend-env.eba-fi5wgagu.us-east-1.elasticbeanstalk.com/api/student/performance/chapterwise?userName=${localStorage.getItem('studentUsername')}&exam=${selectedExam}&subject=${selectedSubject}&chapter=${selectedChapter}`);
 }
 

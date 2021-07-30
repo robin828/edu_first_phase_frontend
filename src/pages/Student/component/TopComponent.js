@@ -39,7 +39,7 @@ const TopComponent = ({ heading, studentClass, rollNo }) => {
       >
         <Grid item>
           <Typography variant="h3" className={classes.name}>
-            {heading}
+            {heading && heading}
           </Typography>
         </Grid>
         <Grid item>

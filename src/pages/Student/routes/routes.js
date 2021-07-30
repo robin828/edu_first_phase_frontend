@@ -1,9 +1,19 @@
-import Dashboard from "../Dashboard";
-import Performance from "../Performance";
-import Homework from "../Homework";
-import Leaderboard from "../Leaderboard";
-import Setting from '../Setting';
-import Practice from "../Practice";
+// import Dashboard from "../Dashboard";
+// import Performance from "../Performance";
+// import Homework from "../Homework";
+// import Leaderboard from "../Leaderboard";
+// import Setting from '../Setting';
+// import Practice from "../Practice";
+import React from 'react';
+import { lazy } from 'react';
+
+const Dashboard = lazy(() => import('../Dashboard'));
+const Performance = lazy(() => import('../Performance'));
+const Homework = lazy(() => import('../Homework'));
+const Leaderboard = lazy(() => import('../Leaderboard'));
+const Setting = lazy(() => import('../Setting'));
+const Practice = lazy(() => import('../Practice'));
+
 
 export const studentRoutes = [
     {
