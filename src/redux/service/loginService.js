@@ -11,13 +11,13 @@ export const teacherLoginApi = createAsyncThunk('teacher/teacherLoginSlice', asy
     return await Axios.post('https://api.myonlineedu.in/api/teacher/login', data);
     // return await Axios.post('https://www.myonlineedu.in/api/teacher/login', data);
 })
-export const getStudentData = createAsyncThunk('student/studentData', async(data) => {
-    // return await Axios.post('https://localhost:9000/api/student/data', data);
-    return await Axios.post('https://api.myonlineedu.in/api/student/data', data);
-    // return await Axios.post('https://www.myonlineedu.in/api/student/data', data);
-})
-export const getTeacherData = createAsyncThunk('teacher/teacherData', async(data) => {
-    // return await Axios.post('https://localhost:9000/api/teacher/data', data);
-    return await Axios.post('https://api.myonlineedu.in/api/teacher/data', data);
-    // return await Axios.post('https://www.myonlineedu.in/api/teacher/data', data);
-})
+// export const getStudentData = createAsyncThunk('student/studentData', async(data) => {
+//     // return await Axios.post('https://localhost:9000/api/student/data', data);
+//     return await Axios.post('https://api.myonlineedu.in/api/student/data', data);
+//     // return await Axios.post('https://www.myonlineedu.in/api/student/data', data);
+// })
+// export const getTeacherData = createAsyncThunk('teacher/teacherData', async(data) => {
+//     // return await Axios.post('https://localhost:9000/api/teacher/data', data);
+//     return await Axios.post('https://api.myonlineedu.in/api/teacher/data', data);
+//     // return await Axios.post('https://www.myonlineedu.in/api/teacher/data', data);
+// })
