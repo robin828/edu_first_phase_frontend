@@ -53,9 +53,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Homework = () => {
     const classes = useStyles()
-    const studentData = useSelector(
-        (state) => state.studentData.login.existingStudent
-    )
+    // const studentData = useSelector(
+    //     (state) => state.studentData.login.existingStudent
+    // )
     const [teacherQuestion, setTeacherQuestions] = useState([])
     const [questions, setQuestion] = useState([])
     const [loading, setLoading] = useState(true)
