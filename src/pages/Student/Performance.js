@@ -28,11 +28,9 @@ import Loader from '../common/Loader'
 // import Axios from 'axios';
 const useStyles = makeStyles({
     button: {
-        backgroundColor: '#F4A261',
-        '&:hover': {
-            backgroundColor: '#F4A261',
-        },
+        // backgroundColor: '#F4A261',
         margin: '1rem',
+        marginTop: '5px',
     },
     mainDiv: {
         marginLeft: '2rem',
@@ -174,13 +172,10 @@ const Performance = () => {
                             setVariable={setSelectedChapter}
                         />
                     </Grid>
-                    {/* <Grid item>
-            <SingleSelect optionForUser={questions} selectLabel="Question" setVariable={setNoOfQuestions} />
-          </Grid> */}
-                    <Grid item>
+                </Grid>
+                <Grid className={classes.button} style={{textAlign: 'center'}} >
                         <Button type="submit"> Search</Button>
                     </Grid>
-                </Grid>
             </form>
             <br />
 
@@ -206,7 +201,7 @@ const Performance = () => {
                             />
                         </Grid>
                         <Grid item xs={0} md={5}>
-                            <CardComponent />
+                            <CardComponent correct={correct} incorrect={incorrect} unattempted={unattempted}   />
                         </Grid>
                     </Grid>
                 </>

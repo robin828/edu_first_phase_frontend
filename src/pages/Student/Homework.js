@@ -8,7 +8,10 @@ import TopComponent from './component/TopComponent'
 import Homeworkcard from './component/HomeworkCard'
 import Divider from '@material-ui/core/Divider'
 import { useSelector } from 'react-redux'
-import { getStudentTopCard, getTeacherQuestions } from '../../redux/service/studentService'
+import {
+    getStudentTopCard,
+    getTeacherQuestions,
+} from '../../redux/service/studentService'
 import PracticeInfo from './PracticeInfo'
 import Loader from '../common/Loader'
 
@@ -55,15 +58,16 @@ const Homework = () => {
     )
     const [teacherQuestion, setTeacherQuestions] = useState([])
     const [questions, setQuestion] = useState([])
-    const [loading, setLoading] = useState(true);
-    const [topCard, setTopCard] = useState({});
+    const [loading, setLoading] = useState(true)
+    const [topCard, setTopCard] = useState({})
+    const [status, setStatus] = useState("Pending");
+    const type = 'teacher'
 
-
-//   useEffect(()=>{
-//     getStudentTopCard({userName:localStorage.getItem('teacherUserName')}).then((res)=>{
-//       setTopCard(res.data);
-//     })
-// }, [])
+    //   useEffect(()=>{
+    //     getStudentTopCard({userName:localStorage.getItem('teacherUserName')}).then((res)=>{
+    //       setTopCard(res.data);
+    //     })
+    // }, [])
     // if(!studentData) {
     //   return null
     // }
@@ -74,24 +78,31 @@ const Homework = () => {
             setTeacherQuestions(res.data.teacherQuestions)
             setLoading(false)
         })
-        getStudentTopCard({userName:localStorage.getItem('teacherUserName')}).then((res)=>{
-            setTopCard(res.data);
-          })
+        getStudentTopCard({
+            userName: localStorage.getItem('teacherUserName'),
+        }).then((res) => {
+            setTopCard(res.data)
+        })
     }, [])
 
     const handleClick = () => {
         console.log('hi')
     }
 
+    console.log(teacherQuestion)
+
     return (
         <div>
-                  <TopComponent heading={"Hi  " + topCard.name + "!"} studentClass={topCard.standard} rollNo={topCard.rollNumber}   />
-
             {questions.length > 0 ? (
-                <PracticeInfo ques={questions} />
+                <PracticeInfo ques={questions} type={type} />
             ) : (
                 <>
-                <Grid
+                <TopComponent
+                heading={'Hi  ' + topCard.name + '!'}
+                studentClass={topCard.standard}
+                rollNo={topCard.rollNumber}
+            />
+                    <Grid
                         direction="column"
                         container
                         justify="space-evenly"
@@ -103,19 +114,22 @@ const Homework = () => {
                                 Worksheets
                             </Typography>
                         </Grid>
-                        {loading ? <Loader /> : 
-                
-                        teacherQuestion.map((question) => (
-                            <Grid item>
-                                <Homeworkcard
-                                    heading={question.subject}
-                                    questions={question.questions}
-                                    setQuestion={setQuestion}
-                                    score="Pending"
-                                />
-                            </Grid>
-                        ))}
-                    </Grid> 
+                        {loading ? (
+                            <Loader />
+                        ) : (
+                            teacherQuestion.map((question) => (
+                                <Grid item>
+                                    <Homeworkcard
+                                        heading={question.subject}
+                                        questions={question.questions}
+                                        setQuestion={setQuestion}
+                                        score={question.date.toString().split('T')[0]}
+                                        setStatus={setStatus}
+                                    />
+                                </Grid>
+                            ))
+                        )}
+                    </Grid>
                 </>
             )}
         </div>

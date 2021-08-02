@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent'
 import { Typography, Button } from '@material-ui/core'
 import { Radio } from 'pretty-checkbox-react'
 import { assignQuestionsToStudents } from '../../redux/service/teacherService'
+import TopComponent from '../Student/component/TopComponent';
 
 const useStyles = makeStyles((theme) => ({
     width: {
@@ -30,7 +31,11 @@ const DisplayQuestions = ({ selectedClass, selectedChapter }) => {
     const handleClick = () => {
         console.log('hi')
     }
-    console.log(questions, 'questions')
+    React.useEffect(()=>{
+        getTeacherDashboard({userName:localStorage.getItem('teacherUserName')}).then((res)=>{
+            setName(res.data.name)
+        })
+    }, [])
 
     const assignQuestions = () => {
         questions.questions.forEach((question) => {
@@ -48,6 +53,7 @@ const DisplayQuestions = ({ selectedClass, selectedChapter }) => {
     }
     return (
         <>
+        <TopComponent heading={`Hi ${name}`} />
             <Typography style={{ textAlign: 'center' }}>
                 Assign Questions
             </Typography>

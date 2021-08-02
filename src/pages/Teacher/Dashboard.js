@@ -77,7 +77,7 @@ const Dashboard = () => {
     // }
     return (
         <div>
-            <TopComponent heading={`Hi ${name}`} />
+            <TopComponent heading={`Hi ${name.split(" ")[0]}`} />
             <Grid
                 container
                 direction="row"

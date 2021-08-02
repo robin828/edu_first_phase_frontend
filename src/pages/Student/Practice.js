@@ -91,11 +91,12 @@ const Practice = () => {
   }
 
   const questions = [,
+    {label: '5Q', value: '5'},
     {label: '20Q', value: '20'},
   ]
   const findQuestions = (e) => {
     e.preventDefault();
-    toggleFullScreen();
+    // toggleFullScreen();
     setTestInstruction(true)
     dispatch(getQuestions({selectedSubject, className: 'X', selectedChapter, selectedExam, noOfQuestions}));
   }
@@ -124,9 +125,11 @@ const Practice = () => {
             <SingleSelect optionForUser={questions} selectLabel="Question" setVariable={setNoOfQuestions} />
           </Grid>
         </Grid>
-        <div styles={{textAlign: 'center'}}>
+        {
+          selectedExam && selectedSubject && selectedChapter && noOfQuestions>0 ? 
+        <div style={{textAlign: 'center'}}>
             <Button type="submit" className={classes.button}> Search</Button>
-          </div>
+          </div> : "" }
       </form>
       <ShowPreviousPracticeTable />
       </>

@@ -3,13 +3,14 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from "@material-ui/core/styles";
 import { getChapters, getQuestions } from'../../redux/service/studentService';
-// import { getClass }
 import SingleSelect from '../common/SingleSelect';
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { useSelector, useDispatch } from 'react-redux';
 import { getTeacherDashboard } from '../../redux/service/teacherService';
 import DisplayQuestions from './DisplayQuestions';
+import TopComponent from '../Student/component/TopComponent';
+
 
 const useStyles = makeStyles((theme) => ({
     QuestionImage: {
@@ -41,6 +42,8 @@ const Homework = () => {
   const [standard, setStandard] = useState([]);
   const [chapters, setChapters] = useState('');
   const [subject, setSubject] = useState('');
+  const [name, setName] = useState("")
+
   const [selectedChapter, setSelectedChapter] = useState('');
   const [noOfQuestions, setNoOfQuestions] = useState(0);
   const [displayQuestions, setDisplayQuestions] = useState(false);
@@ -50,6 +53,12 @@ const Homework = () => {
   const chapterList = [];
   var splitClass;
 
+  useEffect(()=>{
+    getTeacherDashboard({userName:localStorage.getItem('teacherUserName')}).then((res)=>{
+        setName(res.data.name)
+    })
+}, [])
+
 
   useEffect(()=>{
     getTeacherDashboard({userName:localStorage.getItem('teacherUserName')}).then((res)=>{
@@ -57,7 +66,6 @@ const Homework = () => {
         setStandard(classList);
         setSubject(res.data.subject);
     })
-    console.log(selectedClass, typeof selectedClass, '1245')
     if(selectedClass[0]) {
         splitClass = selectedClass[0].split('-')[0];
     }
@@ -67,7 +75,6 @@ const Homework = () => {
         setChapters(chapterList)
     })
   }, [selectedClass])
-
 
   const questions = [
     {label: '20Q', value: '20'},
@@ -80,10 +87,10 @@ const Homework = () => {
     setDisplayQuestions(true)
 }
 
-
   return (
     <>
-    
+            <TopComponent heading={`Hi ${name.split(" ")[0]}`} />
+
       <form onSubmit={findQuestions} >
         <Grid spacing={3} style={{marginTop: '10px'}} container direction="row" justify="center" alignItems="center">
           <Grid item>
@@ -94,6 +101,9 @@ const Homework = () => {
           </Grid>
           <Grid item>
             <SingleSelect optionForUser={questions} selectLabel="Question" setVariable={setNoOfQuestions} />
+          </Grid>
+          <Grid item>
+            {/* <SingleSelect optionForUser={timeInterval} selectLabel="Question" setVariable={setNoOfQuestions} /> */}
           </Grid>
           <Grid item>
             <Button type="submit" > Search</Button>

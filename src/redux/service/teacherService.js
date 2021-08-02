@@ -30,7 +30,7 @@ export const getTeacherDashboard = async (body) => {
 
 
 export const assignQuestionsToStudents = createAsyncThunk('teacher/assign', async (data) => {
-    console.log(data, 'data')
+    // console.log(data, 'data')
     // return await Axios.put(`http://eduprodfirstphasebackend-env.eba-fi5wgagu.us-east-1.elasticbeanstalk.com/api/teacher/assign`, data, {headers})
     return await Axios.put(`http://localhost:9000/api/teacher/assign`, data, {headers})
 })

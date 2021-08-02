@@ -121,7 +121,7 @@ export default function Header({setPractice}) {
                 <Tab disableRipple className={classes.buttons} component={Link} to="/student/performance" label="Performance" />
                 <Tab disableRipple className={classes.buttons} component={Link} to="/student/homework" label="Homework" />
                 <Tab disableRipple className={classes.buttons} component={Link} to="/student/practice" label="Practice" />
-                <Tab disableRipple className={classes.buttons} component={Link} to="/student/leaderboard" label="Leaderboard" />
+                {/* <Tab disableRipple className={classes.buttons} component={Link} to="/student/leaderboard" label="Leaderboard" /> */}
                 <Tab disableRipple className={classes.buttons} component={Link} to="/student/test" label="Test" />
                 <Tab disableRipple className={classes.buttons} component={Link} to="/student/setting" label="Setting" />
           </Tabs>

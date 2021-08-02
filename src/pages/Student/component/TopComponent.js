@@ -50,8 +50,8 @@ const TopComponent = ({ heading, studentClass, rollNo }) => {
             alignItems="flex-end"
             className={classes.name}
           >
-            <Typography variant="h6">Class- {studentClass}</Typography>
-            <Typography variant="h6">Roll Number- {rollNo}</Typography>
+            <Typography variant="h6">{studentClass}</Typography>
+            <Typography variant="h6">{rollNo}</Typography>
           </Grid>
         </Grid>
       </Grid>

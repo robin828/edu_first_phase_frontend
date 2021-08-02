@@ -37,20 +37,18 @@ export const getChapterWisePerformance = async ({userName, selectedChapter, sele
 }
 
 export const getQuestions = createAsyncThunk('student/question', async (data) => {
-    console.log(data, 'data')
+    // console.log(data, 'data')
     return await Axios.post('http://localhost:9000/api/student/question', data);
     // return await Axios.post('http://eduprodfirstphasebackend-env.eba-fi5wgagu.us-east-1.elasticbeanstalk.com/api/student/question', data);
 })
 
 export const getQuestionBy_id = createAsyncThunk('student/question', async (data) => {
-    console.log(data, 'data')
+    // console.log(data, 'data')
     return await Axios.post('http://localhost:9000/api/student/result/question', data);
     // return await Axios.post('http://eduprodfirstphasebackend-env.eba-fi5wgagu.us-east-1.elasticbeanstalk.com/api/student/result/question', data);
 })
 
-
-
 export const saveResult = createAsyncThunk('student/question', async (data) => {
-    console.log(data, 'data')
+    // console.log(data, 'data')
     return await Axios.post('http://localhost:9000/api/student/saveresult', data);
 })

@@ -29,7 +29,7 @@ const PieChart = ({correct, incorrect, left}) => {
           options={{
             title:{
               display:true,
-              text:'Question solved every month',
+              text:'',
               fontSize:20
             },
             legend:{

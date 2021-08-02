@@ -8,21 +8,21 @@ import { Grid, Button, Typography } from '@material-ui/core';
 import Loader from '../common/Loader';
 
 
-const PracticeInfo = ({ques}) => {
+const PracticeInfo = ({ques, type}) => {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true);
-    // function toggleFullScreen() {
-    //     if (!document.fullscreenElement) {
-    //         document.documentElement.requestFullscreen();
-    //     } else {
-    //       if (document.exitFullscreen) {
-    //         // document.exitFullscreen();
-    //       }
-    //     }
-    //   }
-    //   React.useEffect(()=>{
-    //     toggleFullScreen();
-    // }, [])
+    function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+          if (document.exitFullscreen) {
+            // document.exitFullscreen();
+          }
+        }
+      }
+      React.useEffect(()=>{
+        toggleFullScreen();
+    }, [])
     dispatch(removeHeader());
     const [testStart, setTestStart] = useState(false);
     let questions = useSelector(state => state.questions.question.questions)
@@ -55,6 +55,7 @@ const PracticeInfo = ({ques}) => {
             {
                 <QuestionLayout 
                 questions={questions}
+                type={type}
             />
             }
             </>

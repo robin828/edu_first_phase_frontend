@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import { saveResult } from '../../../redux/service/studentService'
 import { showHeader } from '../../../redux/slice/loginSlice'
 import { useHistory } from 'react-router-dom'
+import { Prompt } from 'react-router'
 import ReviewPage from '../ReviewPage'
 
 const useStyles = makeStyles({
@@ -39,8 +40,7 @@ const ResultPage = ({ selectedAnswer, questions, status }) => {
     // console.log(selectedAnswer, questions, '^^')
     const classes = useStyles()
     const dispatch = useDispatch()
-    const history = useHistory()
-    const [type, setType] = useState('Self')
+    const history = useHistory();
     const [reviewQuestion, setReviewQuestion] = useState(-1);
     const incorrect = []
     const correct = []
@@ -58,20 +58,12 @@ const ResultPage = ({ selectedAnswer, questions, status }) => {
                 // console.log(selectedAnswer[index], index,'incorrect');
             }
         } else {
-            leave.push(index)
+            leave.push(index);
+            // console.log(index)
         }
     })
-    const handleQuestion = (question) => {
-        console.log(selectedAnswer, '%%%%%$^^')
-        
-        setReviewQuestion(question)
-        console.log('hi')
-        console.log(questions)
-    }
-    console.log(reviewQuestion, '%%%')
-
-    const handleResult = () => {
-        let payload
+    React.useEffect(()=>{
+        let payload;
         if (status === 'new') {
             payload = {
                 subject: questions[0].subject,
@@ -83,14 +75,21 @@ const ResultPage = ({ selectedAnswer, questions, status }) => {
                 userName: localStorage.getItem('studentUsername'),
                 selectedAnswer: selectedAnswer,
                 questions: question_id,
-                type: type,
+                type: 'self',
                 exam: questions[0].exam,
             }
             dispatch(saveResult(payload))
         }
-        history.push('/student/practice')
+    }, [])
+    const handleQuestion = (question) => {        
+        setReviewQuestion(question)
+    }
+
+    const handleResult = () => {
+        history.push('/student/dashboard')
         dispatch(showHeader())
     }
+    // console.log(questions, "HHH")
 
     return (
         <div>
@@ -179,14 +178,19 @@ const ResultPage = ({ selectedAnswer, questions, status }) => {
                 </Grid>
             </Grid>
 
-            {reviewQuestion>=0 && selectedAnswer[reviewQuestion] && <ReviewPage question={questions[reviewQuestion]} selectedAnswer={selectedAnswer[reviewQuestion][0]} /> }
+            {reviewQuestion>=0 && <ReviewPage question={questions[reviewQuestion]} reviewQuestion={reviewQuestion} selectedAnswer={selectedAnswer} /> }
 
             <div style={{ textAlign: 'center', marginTop: '2rem' }}>
                 <Button onClick={handleResult} className={classes.button}>
                     Done Test
                 </Button>
             </div>
+            {/* <Prompt
+                when={true}
+                message="You have unsaved changes, are you sure you want to leave?"
+            /> */}
         </div>
+
     )
 }
 

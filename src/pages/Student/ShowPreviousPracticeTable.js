@@ -68,9 +68,6 @@ const ShowPreviousPracticeTable = () => {
                     <Typography>Chapter</Typography>
                 </Grid>
                 <Grid item>
-                    <Typography>Type</Typography>
-                </Grid>
-                <Grid item>
                     <Typography>Button</Typography>
                 </Grid>
             </Grid>
@@ -91,9 +88,6 @@ const ShowPreviousPracticeTable = () => {
                         </Grid>
                         <Grid item>
                             <Typography>{result.chapter}</Typography>
-                        </Grid>
-                        <Grid item>
-                            <Typography>{result.type}</Typography>
                         </Grid>
                         <Grid item>
                             <Button

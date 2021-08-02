@@ -17,9 +17,10 @@ const useStyles = makeStyles({
     },
   },
 });
-const Homeworkcard = ({ heading, score, questions, setQuestion }) => {
+const Homeworkcard = ({ heading, score, questions, setQuestion, setStatus }) => {
   const classes = useStyles();
   const handleWorksheetQuestions = () => {
+    setStatus("Attempted");
     setQuestion(questions);
   }
 
@@ -39,7 +40,7 @@ const Homeworkcard = ({ heading, score, questions, setQuestion }) => {
             </Typography>
           </Grid>
           <Grid item>{score}</Grid>
-          <Grid item><Button onClick={handleWorksheetQuestions}>Start</Button></Grid>
+          { <Grid item><Button onClick={handleWorksheetQuestions}>Start</Button></Grid>}
         </Grid>
       </CardContent>
     </>

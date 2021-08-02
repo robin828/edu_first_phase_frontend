@@ -136,6 +136,7 @@ const LoginModel = ({ open, setOpen, user }) => {
                     <TextField
                         id="standard-multiline-flexible"
                         multiline
+                        type="password"
                         rowsMax={4}
                         placeholder="Password"
                         value={password}

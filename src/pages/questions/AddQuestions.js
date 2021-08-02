@@ -41,7 +41,7 @@ const AddQuestions = () => {
 
     }
     return (
-        <div>
+        <div style={{marginLeft: '2rem'}} >
             <form onSubmit={handleSubmit} >
             QuestionText
             <TextField

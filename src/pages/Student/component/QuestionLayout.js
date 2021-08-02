@@ -11,6 +11,10 @@ import { Typography } from '@material-ui/core'
 import { red } from '@material-ui/core/colors'
 import IconButton from '@material-ui/core/IconButton'
 import Drawer from '@material-ui/core/Drawer'
+
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
+import MoreVertIcon from '@material-ui/icons/MoreVert'
 import Latex from 'react-latex'
 
 import MenuIcon from '@material-ui/icons/Menu'
@@ -22,6 +26,7 @@ import Timer from 'react-compound-timer'
 import '@djthoms/pretty-checkbox'
 import { useSelector } from 'react-redux'
 import { displaySelectedQuestions } from '../../../utils/questionUtils'
+import { saveResult } from '../../../redux/service/studentService'
 
 const useStyles = makeStyles({
     questionText: {
@@ -43,11 +48,10 @@ const useStyles = makeStyles({
     options: {
         marginBottom: '3rem',
         marginLeft: '2rem',
-        fontWeight: 200,
     },
     optionDiv: {
         // marginTop: '2.3rem',
-        fontSize: 25,
+        // fontSize: 25,
         fontWeight: 200,
     },
     drawer: {
@@ -60,22 +64,50 @@ const useStyles = makeStyles({
     },
 })
 
-const QuestionLayout = ({ questions }) => {
-    console.log(questions, 'questions')
+const options = [
+    'Spelling Mistake in Question',
+    'Spelling Mistake in Answer',
+    'Wrong Question',
+    'Incorrect Options',
+    'Out of syllabus',
+]
+
+const ITEM_HEIGHT = 48
+
+const QuestionLayout = ({ questions, type }) => {
+    // console.log(questions, 'questions')
     const classes = useStyles()
     const [questionNumber, setQuestionNumber] = useState(0)
     const [selectedAnswer, setSelectedAnswer] = React.useState({})
     const [submit, setSubmit] = useState('Next')
     const [result, setResult] = useState(false)
+    const [suggestion, setSuggestion] = useState("");
     const A = React.useRef(null)
     const B = React.useRef(null)
     const C = React.useRef(null)
     const D = React.useRef(null)
 
+    const [anchorEl, setAnchorEl] = React.useState(null)
+    const open = Boolean(anchorEl)
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+        setSuggestion(event.target.value);
+    }
+
+    const handleClose = () => {
+        setAnchorEl(null)
+    }
+    console.log(suggestion);
+
+    setTimeout(() => {
+        setResult(true)
+    }, 60000)
+
     // const [open, setOpen] = React.useState(false);
 
     const noOfQuestion = useSelector((state) => state.questions.noOfQuestion)
-    console.log(noOfQuestion, '$%')
+    // console.log(noOfQuestion, '$%')
 
     // var q = 0;
     // var questionArr = new Array(noOfQuestion);
@@ -145,9 +177,7 @@ const QuestionLayout = ({ questions }) => {
             questionNumber + 1,
             questionNumber
         )
-        console.log(questions.length, questionNumber + 1, '$')
         if (questions.length == questionNumber + 2) {
-            console.log(questions.length, questionNumber, '$$')
             setSubmit('Submit')
         }
         if (submit === 'Submit') {
@@ -173,6 +203,7 @@ const QuestionLayout = ({ questions }) => {
                     selectedAnswer={selectedAnswer}
                     questions={questions}
                     status="new"
+                    type={type}
                 />
             ) : (
                 <>
@@ -208,10 +239,7 @@ const QuestionLayout = ({ questions }) => {
                         </Button>
                     </div>
                     <div style={{ fontSize: 39, textAlign: 'center' }}>
-                        <Timer
-                            initialTime={60000*10}
-                            direction="backward"
-                        >
+                        <Timer initialTime={600000} direction="backward">
                             {() => (
                                 <React.Fragment>
                                     <Timer.Hours /> :
@@ -221,6 +249,15 @@ const QuestionLayout = ({ questions }) => {
                             )}
                         </Timer>
                     </div>
+                    hi
+                    <IconButton
+                        aria-label="more"
+                        aria-controls="long-menu"
+                        aria-haspopup="true"
+                        onClick={handleClick}
+                    >
+                        <MoreVertIcon />
+                    </IconButton>
                     {/* <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -238,12 +275,15 @@ const QuestionLayout = ({ questions }) => {
                             </Latex>
                         }
                     </Typography>
+                    {/* <IconButton>
+                        <MenuButton />
+                    </IconButton> */}
                     <div className={classes.optionDiv} onChange={onChangeValue}>
                         {questions[questionNumber].options.map(
                             (option, index) => (
                                 <>
                                     <Radio
-                                        name="pizza"
+                                        name="options"
                                         className={classes.options}
                                         ref={refs[index]}
                                         value={option}
@@ -279,6 +319,29 @@ const QuestionLayout = ({ questions }) => {
                             {submit}
                         </Button>
                     </div>
+                    <Menu
+                        id="long-menu"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={open}
+                        onClose={handleClose}
+                        PaperProps={{
+                            style: {
+                                maxHeight: ITEM_HEIGHT * 4.5,
+                                width: '20ch',
+                            },
+                        }}
+                    >
+                        {options.map((option) => (
+                            <MenuItem
+                                key={option}
+                                selected={option === 'Pyxis'}
+                                onClick={handleClose}
+                            >
+                                {option}
+                            </MenuItem>
+                        ))}
+                    </Menu>
                     {/* <Drawer variant="persistent"
                 anchor="right"
                 open={open}

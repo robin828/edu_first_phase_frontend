@@ -21,9 +21,8 @@ const useStyles = makeStyles({
 		
 	},
 });
-const CardComponent = ({}) => {
+const CardComponent = ({correct, incorrect, unattempted}) => {
 	const classes = useStyles();
-
 
 	return (
 		<>
@@ -31,6 +30,22 @@ const CardComponent = ({}) => {
 				<Typography gutterBottom variant="h5" component="h2">
 					Your Performance
 				</Typography >
+				<Typography gutterBottom variant="subtitle" style={{color: 'green'}}>
+					Correct - {correct}
+				</Typography>
+				<br />
+				<Typography gutterBottom variant="subtitle" style={{color: 'red'}}>
+					Incorrect - {incorrect}
+				</Typography >
+				<br />
+				<Typography gutterBottom variant="subtitle" style={{color: 'blue'}}>
+					Unattempted - {unattempted}
+				</Typography >
+				< br />
+				<Typography gutterBottom variant="subtitle" style={{color: 'blue'}}>
+					Accuracy - { ((correct/(correct + incorrect + unattempted))* 100).toFixed(2)  } %
+				</Typography >
+				{/* {correct + incorrect + unattempted} */}
 				{/* {
 					teacherAnnouncement ? 
 						<Typography variant="body1" color="textSecondary" component="p">
