@@ -102,14 +102,14 @@ const Performance = () => {
             })
     }, [selectedExam, selectedSubject])
 
-    useEffect(() => {
-        dispatch(
-            getStudentData({
-                userName: localStorage.getItem('studentUsername'),
-                schoolName: localStorage.getItem('schoolName'),
-            })
-        )
-    }, [])
+    // useEffect(() => {
+    //     dispatch(
+    //         getStudentData({
+    //             userName: localStorage.getItem('studentUsername'),
+    //             schoolName: localStorage.getItem('schoolName'),
+    //         })
+    //     )
+    // }, [])
 
     const showPerformance = (e) => {
         e.preventDefault()
