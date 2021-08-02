@@ -13,6 +13,7 @@ const Homework = lazy(() => import('../Homework'));
 const Leaderboard = lazy(() => import('../Leaderboard'));
 const Setting = lazy(() => import('../Setting'));
 const Practice = lazy(() => import('../Practice'));
+const Test = lazy(() => import('../Test'));
 
 
 export const studentRoutes = [
@@ -35,6 +36,10 @@ export const studentRoutes = [
     {
         path: "/student/practice",
         component: Practice 
+    },
+    {
+        path: "/student/test",
+        component: Test 
     },
     {
         path: '/student/setting',

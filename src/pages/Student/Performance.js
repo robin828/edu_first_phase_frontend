@@ -22,7 +22,6 @@ import {
 import PieChart from '../Student/component/GraphComponent/PieChart'
 import SingleSelect from '../common/SingleSelect'
 import PropTypes from 'prop-types'
-import MultiSelectDropDown from './component/MultiSelectDropDown'
 import { Button } from '@material-ui/core'
 import Loader from '../common/Loader'
 // import Axios from 'axios';

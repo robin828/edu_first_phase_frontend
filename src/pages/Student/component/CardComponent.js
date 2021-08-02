@@ -45,6 +45,9 @@ const CardComponent = ({correct, incorrect, unattempted}) => {
 				<Typography gutterBottom variant="subtitle" style={{color: 'blue'}}>
 					Accuracy - { ((correct/(correct + incorrect + unattempted))* 100).toFixed(2)  } %
 				</Typography >
+				<Typography gutterBottom variant="subtitle" style={{color: 'blue'}}>
+					Accuracy - { ((correct/(correct + incorrect + unattempted))* 100).toFixed(2)  } %
+				</Typography >
 				{/* {correct + incorrect + unattempted} */}
 				{/* {
 					teacherAnnouncement ? 

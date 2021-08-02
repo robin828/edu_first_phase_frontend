@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import TopComponent from "./component/TopComponent";
-import MultiSelectDropDown from "../Student/component/MultiSelectDropDown";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";

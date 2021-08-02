@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import TopComponent from "./component/TopComponent";
 import Homeworkcard from "./component/HomeworkCard";
-import SubjectDropDown from "./component/SubjectDropDown";
 import { useSelector } from 'react-redux';
 
 
@@ -27,7 +26,6 @@ const Leaderboard = () => {
     return (
     <div>
         <TopComponent heading="Leaderboard" studentClass={studentData.studentClass} rollNo={studentData.rollNo} />
-        <SubjectDropDown />
         <Grid
         direction="column"
         container
