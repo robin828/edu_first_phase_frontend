@@ -31,9 +31,10 @@ export const getTeacherQuestions = async () => {
     return await Axios.get(`https://api.myonlineedu.in/api/student/teacher/question?userName=${localStorage.getItem('studentUsername')}`);
 }
 
-export const getChapterWisePerformance = async ({userName, selectedChapter, selectedExam, selectedSubject}) => {
-    // return await Axios.get(`http://localhost:9000/api/student/performance/chapterwise?userName=${localStorage.getItem('studentUsername')}&exam=${selectedExam}&subject=${selectedSubject}&chapter=${selectedChapter}&userName=${userName}`);
-    return await Axios.get(`https://api.myonlineedu.in/api/student/performance/chapterwise?userName=${localStorage.getItem('studentUsername')}&exam=${selectedExam}&subject=${selectedSubject}&chapter=${selectedChapter}&userName=${userName}`);
+export const getChapterWisePerformance = async ({ selectedChapter, selectedExam, selectedSubject}) => {
+    // console.log(userName)
+    // return await Axios.get(`http://localhost:9000/api/student/performance/chapterwise?userName=${localStorage.getItem('studentUsername')}&exam=${selectedExam}&subject=${selectedSubject}&chapter=${selectedChapter}`);
+    return await Axios.get(`https://api.myonlineedu.in/api/student/performance/chapterwise?userName=${localStorage.getItem('studentUsername')}&exam=${selectedExam}&subject=${selectedSubject}&chapter=${selectedChapter}`);
 }
 
 export const getQuestions = createAsyncThunk('student/question', async (data) => {
