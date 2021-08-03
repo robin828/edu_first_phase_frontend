@@ -33,7 +33,7 @@ export const getTeacherQuestions = async () => {
 
 export const getChapterWisePerformance = async ({userName, selectedChapter, selectedExam, selectedSubject}) => {
     // return await Axios.get(`http://localhost:9000/api/student/performance/chapterwise?userName=${localStorage.getItem('studentUsername')}&exam=${selectedExam}&subject=${selectedSubject}&chapter=${selectedChapter}&userName=${userName}`);
-    return await Axios.get(`https://api.myonlineedu.in/api/student/performance/chapterwise?userName=${localStorage.getItem('studentUsername')}&exam=${selectedExam}&subject=${selectedSubject}&chapter=${selectedChapter}`);
+    return await Axios.get(`https://api.myonlineedu.in/api/student/performance/chapterwise?userName=${localStorage.getItem('studentUsername')}&exam=${selectedExam}&subject=${selectedSubject}&chapter=${selectedChapter}&userName=${userName}`);
 }
 
 export const getQuestions = createAsyncThunk('student/question', async (data) => {
