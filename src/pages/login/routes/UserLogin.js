@@ -10,7 +10,7 @@ const UserLogin = () => {
             alert('Wrong id and password');
             history.push('/')
         }
-    }, 1000);
+    }, 2000);
     return (
         <div>
            Loading.... 
