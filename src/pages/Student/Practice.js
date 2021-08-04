@@ -91,7 +91,7 @@ const Practice = () => {
   }
 
   const questions = [,
-    {label: '5Q', value: '5'},
+    {label: '15Q', value: '15'},
     {label: '20Q', value: '20'},
   ]
   const findQuestions = (e) => {
