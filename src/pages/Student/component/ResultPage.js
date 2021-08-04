@@ -87,7 +87,14 @@ const ResultPage = ({ selectedAnswer, questions, status }) => {
 
     const handleResult = () => {
         history.push('/student/dashboard')
-        dispatch(showHeader())
+        dispatch(showHeader());
+        document.onclick = function (event) {
+            if (document.fullscreenElement) {
+              document.exitFullscreen()
+                .then(() => console.log("Document Exited from Full screen mode"))
+                .catch((err) => console.error(err))
+            }
+          }
     }
     // console.log(questions, "HHH")
 
