@@ -3,10 +3,11 @@ import { loginRoutes } from './routes'
 import { studentRoutes } from '../../Student/routes/routes'
 import Header from '../../Student/component/Header'
 import TeacherHeader from '../../Teacher/components/TeacherHeader'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import { teacherRoutes } from '../../Teacher/routes/routes'
 import { useSelector } from 'react-redux'
 import { Suspense } from 'react'
+import UserLogin from './UserLogin'
 
 const LoginRoutes = () => {
     const header = useSelector((state) => state.userLogin.header)
@@ -30,7 +31,8 @@ const LoginRoutes = () => {
                     path={route.path}
                 />
             ))}
-            {localStorage.getItem('studentUsername') && header && <Header />}
+            <Route exact path="/user/login" component={UserLogin} />
+            {localStorage.getItem('studentUsername') && header && <> <Header />
             {studentRoutes.map((route) => (
                 //     <Suspense fallback={<div>Loading...</div>}>
                 //     <Route
@@ -50,10 +52,9 @@ const LoginRoutes = () => {
                     // component={route.component}
                     path={route.path}
                 />
-            ))}
-            {localStorage.getItem('teacherUserName') && header && (
+            ))}</>}
+            {localStorage.getItem('teacherUserName') && header && <>
                 <TeacherHeader />
-            )}
             {teacherRoutes.map((route) => (
                 <Route
                     key={route.path}
@@ -61,8 +62,11 @@ const LoginRoutes = () => {
                     component={route.component}
                     path={route.path}
                 />
-            ))}
+            ))}</>}
             </Suspense>
+            {/* <Route path="*">
+                <Redirect to="/" />
+            </Route> */}
         </>
     )
 }

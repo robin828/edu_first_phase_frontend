@@ -21,6 +21,7 @@ export const loginSlice = createSlice({
     extraReducers:(builder) => {
         builder.addCase(studentLoginApi.fulfilled, (state, action) => {
             state.login = {...action.payload.data};
+            localStorage.setItem('studentUsername', state.login.userName)
             localStorage.setItem('S_auth_token', state.login.token)
         })
         builder.addCase(studentLoginApi.pending, (state) => {

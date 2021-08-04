@@ -15,5 +15,9 @@ export const teacherRoutes = [
         path: "/teacher/performance",
         component: Performance 
     },
+    {
+        path :"*",
+        component: Homework
+    }
     
 ]

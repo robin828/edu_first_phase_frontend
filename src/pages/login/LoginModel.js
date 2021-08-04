@@ -80,9 +80,11 @@ const LoginModel = ({ open, setOpen, user }) => {
 
     const handleSubmit = () => {
         if (user === "Student") {
-            dispatch(studentLoginApi({ userName, password }));
-            localStorage.setItem('studentUsername', userName);
-            history.push('/student/dashboard');
+            if(userName != '' && password !='' ) {
+                dispatch(studentLoginApi({ userName, password }));
+                // localStorage.setItem('studentUsername', userName);
+                history.push('/user/login');
+            }
         }
         if (user === "Teacher") {
             dispatch(teacherLoginApi({ userName, password }));
@@ -112,17 +114,6 @@ const LoginModel = ({ open, setOpen, user }) => {
                 <Grid item className={classes.texts}>
                     <Typography variant="h3">Login</Typography>
                 </Grid>
-                {/* <Grid container direction="row">
-                    <Grid item>
-                        <img src={indiaflag} alt-={indiaflag} />
-                    </Grid>
-                    <Grid item>
-                        <Typography className={classes.india}>India</Typography>
-                    </Grid>
-                </Grid>
-                <Grid item>
-                    <Typography className={classes.texts}>Phone Number</Typography>
-                </Grid> */}
                 <Grid item>
                     <TextField
                         id="standard-multiline-flexible"

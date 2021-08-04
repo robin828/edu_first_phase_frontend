@@ -10,7 +10,7 @@ import teacher from "../../img/teacher.svg";
 import student from "../../img/student.svg";
 import CardComponent from './CardComponent';
 import ModelComponent from './LoginModel';
-
+import { useHistory } from 'react-router-dom';
 const useStyles = makeStyles({
   schoolName: {
     marginTop: "1rem",
@@ -46,6 +46,8 @@ function Login() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState("");
+  const history = useHistory();
+
 
   return (
     <>
