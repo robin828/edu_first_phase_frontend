@@ -13,6 +13,7 @@ import { getExam, getChapters, getQuestions, getResults, getStudentTopCard } fro
 import SingleSelect from '../common/SingleSelect';
 import PracticeInfo from "./PracticeInfo";
 import ShowPreviousPracticeTable from './ShowPreviousPracticeTable';
+import { removeHeader } from "../../redux/slice/loginSlice";
 
 const useStyles = makeStyles((theme) => ({
   QuestionImage: {
@@ -96,6 +97,7 @@ const Practice = () => {
   const findQuestions = (e) => {
     e.preventDefault();
     // toggleFullScreen();
+    // dispatch(removeHeader());
     setTestInstruction(true)
     dispatch(getQuestions({selectedSubject, className: 'X', selectedChapter, selectedExam, noOfQuestions}));
   }

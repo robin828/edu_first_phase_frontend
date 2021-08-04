@@ -10,6 +10,7 @@ import { showHeader } from '../../../redux/slice/loginSlice'
 import { useHistory } from 'react-router-dom'
 import { Prompt } from 'react-router'
 import ReviewPage from '../ReviewPage'
+import Latex from 'react-latex'
 
 const useStyles = makeStyles({
     mainDiv: {

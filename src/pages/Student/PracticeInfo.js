@@ -10,7 +10,7 @@ import Loader from '../common/Loader';
 
 const PracticeInfo = ({ques, type}) => {
     const dispatch = useDispatch();
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
     function toggleFullScreen() {
         if (!document.fullscreenElement) {
             document.documentElement.requestFullscreen();
@@ -27,13 +27,12 @@ const PracticeInfo = ({ques, type}) => {
     const [testStart, setTestStart] = useState(false);
     let questions = useSelector(state => state.questions.question.questions)
     if(ques && ques.length>0) {
-        console.log(typeof ques)
         questions = [...ques];
-    }
+    }console.log('jijijiji', testStart)
     const noOfQuestions = useSelector(state => state.noOfQuestions);
     const instructions = (
         <>
-            <Grid container direction="row" alignItems="center" justifyContent="center" >
+            <Grid container direction="row" alignItems="center" justifyContent="center" style={{marginTop: '2rem'}} >
                 <Typography>
                     Welcome to the test
                 </Typography>
@@ -44,7 +43,6 @@ const PracticeInfo = ({ques, type}) => {
                     Incorrect Question reward you -1 marks
                 </Typography>
                 <Button onClick={() => setTestStart(true)} >Start Test</Button>
-
             </Grid>
         </>
     )
@@ -68,6 +66,8 @@ const PracticeInfo = ({ques, type}) => {
             {
                 testStart ? mainTestPage : instructions
             }
+
+            {/* hi */}
         </>
     )
 }

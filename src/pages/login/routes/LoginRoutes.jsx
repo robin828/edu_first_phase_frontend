@@ -32,8 +32,8 @@ const LoginRoutes = () => {
                 />
             ))}
             <Route exact path="/user/login" component={UserLogin} />
-            {localStorage.getItem('studentUsername') && header && <> <Header />
-            {studentRoutes.map((route) => (
+            {localStorage.getItem('studentUsername') && header &&  <Header />}
+            { localStorage.getItem('studentUsername') && studentRoutes.map((route) => (
                 //     <Suspense fallback={<div>Loading...</div>}>
                 //     <Route
                 //         key={route.path}
@@ -52,7 +52,7 @@ const LoginRoutes = () => {
                     // component={route.component}
                     path={route.path}
                 />
-            ))}</>}
+            ))}
             {localStorage.getItem('teacherUserName') && header && <>
                 <TeacherHeader />
             {teacherRoutes.map((route) => (
