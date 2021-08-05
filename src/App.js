@@ -17,13 +17,13 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-      <Suspense fallback={<div style={{textAlign: 'center'}} ><Loader/></div>}>
+      {/* <Suspense fallback={<div style={{textAlign: 'center'}}><Loader/></div>}> */}
     <Router>
           <Switch>
             <LoginRoutes />
           </Switch>
         </Router> 
-        </Suspense>
+
         {/* <Checking />
         {/* <QuestionLayout /> */}
         {/* <AddQuestions /> */}

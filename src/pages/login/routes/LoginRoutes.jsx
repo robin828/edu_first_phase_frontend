@@ -8,12 +8,12 @@ import { teacherRoutes } from '../../Teacher/routes/routes'
 import { useSelector } from 'react-redux'
 import { Suspense } from 'react'
 import UserLogin from './UserLogin'
-
+import Loader from '../../common/Loader';
 const LoginRoutes = () => {
     const header = useSelector((state) => state.userLogin.header)
     return (
         <>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div style={{textAlign: 'center'}}><Loader/></div>}>
             {loginRoutes.map((route) => (
                 //     <Suspense fallback={<div>Loading...</div>}>
                 //     <Route
