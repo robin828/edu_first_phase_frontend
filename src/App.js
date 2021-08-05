@@ -8,7 +8,7 @@ import LoginRoutes from './pages/login/routes/LoginRoutes.jsx'
 import Checking from "./Checking";
 import { Suspense } from "react";
 import AddQuestions from "./pages/questions/AddQuestions";
-
+import Loader from "./pages/common/Loader";
 import QuestionLayout from "./pages/Student/component/QuestionLayout";
 
 
@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div style={{textAlign: 'center'}} ><Loader/></div>}>
     <Router>
           <Switch>
             <LoginRoutes />
