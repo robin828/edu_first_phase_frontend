@@ -85,6 +85,9 @@ const LoginModel = ({ open, setOpen, user }) => {
                 // localStorage.setItem('studentUsername', userName);
                 history.push('/user/login');
             }
+            else {
+                alert('Mandatory field are empty')
+            }
         }
         if (user === "Teacher") {
             dispatch(teacherLoginApi({ userName, password }));
