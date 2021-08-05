@@ -1,5 +1,6 @@
-import React from 'react'
-import { useHistory } from 'react-router'
+import React from 'react';
+import Loader from '../../common/Loader';
+import { useHistory } from 'react-router';
 const UserLogin = () => {
     const history = useHistory();
     setTimeout(() => {
@@ -12,8 +13,8 @@ const UserLogin = () => {
         }
     }, 3000);
     return (
-        <div>
-           Loading.... 
+        <div style={{textAlign: 'center'}} >
+           <Loader />
         </div>
     )
 }
