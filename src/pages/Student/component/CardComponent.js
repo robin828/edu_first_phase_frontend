@@ -26,6 +26,7 @@ const CardComponent = ({correct, incorrect, unattempted}) => {
 
 	return (
 		<>
+		{correct+incorrect+unattempted>0 && 
 			<CardContent className={classes.paperGrid} >
 				<Typography gutterBottom variant="h5" component="h2">
 					Your Performance
@@ -57,6 +58,7 @@ const CardComponent = ({correct, incorrect, unattempted}) => {
 				} */}
 				
 			</CardContent>
+}
 		</>
 	)
 }

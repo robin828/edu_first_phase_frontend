@@ -44,5 +44,5 @@ export const studentRoutes = [
     {
         path: '/student/setting',
         component: Setting
-    }
+    },
 ]
