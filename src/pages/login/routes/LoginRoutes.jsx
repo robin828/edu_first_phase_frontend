@@ -43,9 +43,9 @@ const LoginRoutes = () => {
                 />
             ))
             }
-            {localStorage.getItem('studentUsername') && <Route path="*">
-                <Redirect to="/" />
-            </Route>}
+            {/* {localStorage.getItem('studentUsername') && <Route path="*">
+                <Redirect to="/student/dashboard" />
+            </Route>} */}
             {localStorage.getItem('teacherUserName') && header && <>
                 <TeacherHeader />
             {teacherRoutes.map((route) => (
