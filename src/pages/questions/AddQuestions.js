@@ -3,8 +3,7 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Latex from 'react-latex'
 import axios from 'axios'
-import { uploadFile } from 'react-s3'
-import AWS from 'aws-sdk'
+
 
 
 
