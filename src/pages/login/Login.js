@@ -69,7 +69,7 @@ function Login() {
           Setting
         </Button>
       </Grid>
-      <Grid container direction="column" justify="center" alignItems="center">
+      {/* <Grid container direction="column" justify="center" alignItems="center">
         <Grid item>
           <img
             alt={schoolImage}
@@ -80,7 +80,7 @@ function Login() {
         <Grid item>
           <Typography className={classes.schoolName}>Online Edu</Typography>
         </Grid>
-      </Grid>
+      </Grid> */}
 
       <Grid
         container
@@ -89,7 +89,7 @@ function Login() {
         alignItems="center"
         className={classes.loginGrid}
       >
-        <CardComponent className={classes.cardComp} image={teacher} userDetail={"Teacher"} setOpen={setOpen} setUser={setUser} />
+        {/* <CardComponent className={classes.cardComp} image={teacher} userDetail={"Teacher"} setOpen={setOpen} setUser={setUser} /> */}
         <CardComponent className={classes.cardComp} image={student} userDetail={"Student"} setOpen={setOpen} setUser={setUser} />
       </Grid> 
       <div style={{border: 'red'}} >

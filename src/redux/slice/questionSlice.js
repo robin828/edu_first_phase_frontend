@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { getQuestions } from '../service/studentService'
+import { getQuestions, getQuestionBy_id } from '../service/studentService'
 
 export const questionSlice = createSlice({
     name: 'question',
@@ -19,7 +19,7 @@ export const questionSlice = createSlice({
     extraReducers:(builder) => {
         builder.addCase(getQuestions.fulfilled, (state, action) => {
             state.question = {...action.payload.data};
-            console.log(action.payload.data)
+            console.log(action.payload.data, '}}{{{')
             state.loading = action.payload.data
         })
         builder.addCase(getQuestions.pending, (state) => {

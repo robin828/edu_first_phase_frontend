@@ -10,7 +10,10 @@ import Graph from '../../img/graph.svg'
 import Graph1 from '../../img/graph1.svg'
 import { useDispatch, useSelector } from 'react-redux'
 // import { getStudentData } from '../../redux/service/loginService'
-import { getStudentClass, getStudentTopCard } from '../../redux/service/studentService'
+import {
+    getStudentClass,
+    getStudentTopCard,
+} from '../../redux/service/studentService'
 import CardComponent from './component/CardComponent'
 import LineGraph from '../Student/component/GraphComponent/LineGraph'
 import {
@@ -18,11 +21,11 @@ import {
     getChapters,
     getChapterWisePerformance,
 } from '../../redux/service/studentService'
-
+import Axios from 'axios'
 import PieChart from '../Student/component/GraphComponent/PieChart'
 import SingleSelect from '../common/SingleSelect'
 import PropTypes from 'prop-types'
-import { Button } from '@material-ui/core'
+import { Button, Typography } from '@material-ui/core'
 import Loader from '../common/Loader'
 // import Axios from 'axios';
 const useStyles = makeStyles({
@@ -40,6 +43,18 @@ const useStyles = makeStyles({
     headingGrid: {
         marginTop: '1.5rem',
     },
+    headText: {
+        fontFamily: 'Poppins',
+        fontWeight: 500,
+        background: '#264653',
+        color: '#ffffff',
+        marginTop: '1rem',
+        marginBottom: '1rem',
+        paddingRight: '3rem',
+        paddingLeft: '3rem',
+        paddingTop: '1rem',
+        paddingBottom: '1rem',
+    },
 })
 
 const Performance = () => {
@@ -55,26 +70,41 @@ const Performance = () => {
     const [correct, setCorrect] = useState(0)
     const [incorrect, setIncorrect] = useState(0)
     const [unattempted, setUnattempted] = useState(0)
+    const [phyCorrect, setPhyCorrect] = useState(0)
+    const [phyIncorrect, setPhyIncorrect] = useState(0)
+    const [phyUnattempted, setPhyUnattempted] = useState(0)
     const [performance, setPerformance] = useState(false)
-    const [topCard, setTopCard] = useState({});
-    const [loading, setLoading] = useState(false);
-
+    const [topCard, setTopCard] = useState({})
+    const [loading, setLoading] = useState(false)
+    const [studentSubject, setStudentSubject] = useState()
 
     const examsList = []
     const subjectList = []
     const chapterList = []
 
+    // https://api.myonlineedu.in
+    const url = "https://api.myonlineedu.in/api/student/subject"
+    // const url = "http://localhost:9000/api/student/subject"
 
-  useEffect(()=>{
-    getStudentTopCard({userName:localStorage.getItem('teacherUserName')}).then((res)=>{
-      setTopCard(res.data);
-    })
-}, [])
+    useEffect(() => {
+        getStudentTopCard({
+            userName: localStorage.getItem('teacherUserName'),
+        }).then((res) => {
+            setTopCard(res.data)
+        })
+        Axios.post(url, {
+            userName: localStorage.getItem('studentUsername'),
+        }).then((res) => {
+            console.log(res.data, ':::')
+            setStudentSubject(res.data.subjects)
+        })
+    }, [])
 
+    // console.log(studentSubject, "{{}}");
 
     useEffect(() => {
         !selectedExam &&
-            getExam('X').then((res) => {
+            getExam('XI').then((res) => {
                 setExams(res.data)
                 res.data.exams.forEach((exam) => {
                     examsList.push({
@@ -94,7 +124,7 @@ const Performance = () => {
                 }
             })
         selectedSubject &&
-            getChapters(selectedSubject).then((res) => {
+            getChapters(selectedSubject, selectedExam).then((res) => {
                 res.data.chaptersName.forEach((chapter) => {
                     chapterList.push({ value: chapter, label: chapter })
                 })
@@ -128,7 +158,34 @@ const Performance = () => {
             setPerformance(true)
             setLoading(false)
         })
+        getChapterWisePerformance({
+            userName: "",
+            selectedChapter,
+            selectedExam,
+            selectedSubject,
+        }).then((res) => {
+            setPhyCorrect(res.data.correct)
+            setPhyIncorrect(res.data.incorrect)
+            setPhyUnattempted(res.data.unattempted)
+            // setPerformance(true)
+            setLoading(false)
+        })
     }
+
+    React.useEffect(() => {
+        // getChapterWisePerformance({
+        //     userName: localStorage.getItem('studentUsername'),
+        //     selectedChapter,
+        //     selectedExam: "JEE Mains",
+        //     selectedSubject: "Physics",
+        // }).then((res) => {
+        //     setPhyCorrect(res.data.correct)
+        //     setPhyIncorrect(res.data.incorrect)
+        //     setPhyUnattempted(res.data.unattempted)
+        //     setPerformance(true)
+        //     setLoading(false)
+        // })
+    }, [])
 
     // let classData = studentData.subject;
     // console.log(classData, typeof(classData));
@@ -172,39 +229,94 @@ const Performance = () => {
                         />
                     </Grid>
                 </Grid>
-                <Grid className={classes.button} style={{textAlign: 'center'}} >
-                        <Button type="submit"> Search</Button>
-                    </Grid>
+                <Grid
+                    className={classes.button}
+                    style={{ textAlign: 'center' }}
+                >
+                    <Button type="submit"> Search</Button>
+                </Grid>
             </form>
             <br />
 
-            {loading ? <Loader /> : 
-            performance && (
-                <>
-                    <HeadingComponent
-                        imagePath={Graph1}
-                        heading="See Your Performance"
-                    />
+            {loading ? (
+                <Loader />
+            ) : (
+                performance && (
+                    <>
+                        {/* <HeadingComponent
+                            imagePath={Graph1}
+                            heading="See Your Performance"
+                        /> */}
 
-                    <Grid
-                        container
-                        justify="space-evenly"
-                        alignItems="center"
-                        direction="row"
-                    >
-                        <Grid item sm={12} md={5}>
-                            <PieChart
-                                correct={correct}
-                                incorrect={incorrect}
-                                left={unattempted}
-                            />
+                        <Grid
+                            container
+                            justify="space-evenly"
+                            alignItems="center"
+                            direction="row"
+                        >
+                            <Grid item sm={12} md={5}>
+                                <PieChart
+                                    correct={correct}
+                                    incorrect={incorrect}
+                                    left={unattempted}
+                                />
+                            </Grid>
+                            <Grid item xs={0} md={5}>
+                                <PieChart
+                                    correct={phyCorrect}
+                                    incorrect={phyIncorrect}
+                                    left={phyUnattempted}
+                                />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={0} md={5}>
-                            <CardComponent correct={correct} incorrect={incorrect} unattempted={unattempted}   />
-                        </Grid>
-                    </Grid>
-                </>
+                        <div style={{textAlign:'center', display: 'flex', alignItems: 'center', justifyContent: 'center'}} >
+                            <Typography>Comaprision</Typography>
+                            <div style={{textAlign:'center', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                <div>
+                                    <Typography>Student</Typography>
+                                </div>
+                                <div>
+                                    <Typography>Average</Typography>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )
             )}
+            <Grid
+                container
+                justify="space-evenly"
+                alignItems="center"
+                direction="row"
+            >
+                <Grid item sm={12} md={5}>
+                    <LineGraph title={'Ideal Accuracy'} />
+                </Grid>
+                <Grid item xs={0} md={5}>
+                    <LineGraph title={'Your Accuracy'} />
+                </Grid>
+            </Grid>
+            {/* {studentSubject&&studentSubject.map(sub => (
+                <Grid
+                container
+                justify="space-evenly"
+                alignItems="center"
+                direction="row"
+            >
+                <Grid item sm={12} md={5}>
+                    <PieChart
+                        correct={phyCorrect}
+                        incorrect={phyIncorrect}
+                        left={phyUnattempted}
+                    />
+                </Grid>
+                <Grid item xs={0} md={5}>
+                    <LineGraph title={'Your Accuracy'} />
+                </Grid>
+            </Grid>
+            ))} */}
+
+            {/* < LineGraph /> */}
         </>
     )
 }

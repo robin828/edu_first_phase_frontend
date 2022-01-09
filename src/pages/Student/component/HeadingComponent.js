@@ -19,7 +19,8 @@ attendenceIcon: {
   },
   rowGrid: {
     background: "#264653",
-    // width: "100%",
+    width: "100%",
+    // marginLeft: '3rem',
     paddingRight: "3rem",
     paddingLeft: "3rem",
   },

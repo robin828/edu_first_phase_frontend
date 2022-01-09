@@ -74,8 +74,8 @@ const Homework = () => {
 
     useEffect(() => {
         getTeacherQuestions().then((res) => {
-            console.log(res.data)
-            setTeacherQuestions(res.data.teacherQuestions)
+            console.log(res.data.testPapers)
+            setTeacherQuestions(res.data.testPapers)
             setLoading(false)
         })
         getStudentTopCard({
@@ -120,11 +120,11 @@ const Homework = () => {
                             teacherQuestion.map((question) => (
                                 <Grid item>
                                     <Homeworkcard
-                                        heading={question.subject}
+                                        heading={question.testName}
                                         questions={question.questions}
                                         setQuestion={setQuestion}
-                                        score={question.date.toString().split('T')[0]}
-                                        setStatus={setStatus}
+                                        score={question.Date}
+                                        setStatus={question.syllabus}
                                     />
                                 </Grid>
                             ))

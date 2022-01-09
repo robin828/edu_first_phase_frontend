@@ -5,6 +5,7 @@ import { teacherLoginSlice } from './slice/teacherLoginSlice';
 // import { teacherDataSlice } from './slice/teacherDataSlice';
 import { announcementSlice } from './slice/announcementSlice';
 import { questionSlice } from './slice/questionSlice';
+import { resultSlice } from './slice/resultSlice';
 
 const store = configureStore({
     reducer: {
@@ -13,7 +14,9 @@ const store = configureStore({
         // studentData: studentDataSlice.reducer,
         // teacherData: teacherDataSlice.reducer,
         announcement: announcementSlice.reducer,
-        questions: questionSlice.reducer
+        questions: questionSlice.reducer,
+        resultQuestions: resultSlice.reducer,
+
     },
         middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

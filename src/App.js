@@ -10,6 +10,7 @@ import { Suspense } from "react";
 import AddQuestions from "./pages/questions/AddQuestions";
 import Loader from "./pages/common/Loader";
 import QuestionLayout from "./pages/Student/component/QuestionLayout";
+import { BarGraph } from "./pages/Student/component/GraphComponent/BarGraph";
 
 
 function App() {
@@ -20,12 +21,13 @@ function App() {
       {/* <Suspense fallback={<div style={{textAlign: 'center'}}><Loader/></div>}> */}
     <Router>
           <Switch>
-            <LoginRoutes />
+            <LoginRoutes /> 
+            {/* <BarGraph /> */}
           </Switch>
         </Router> 
 
         {/* <Checking />
-        {/* <QuestionLayout /> */}
+        // {/* <QuestionLayout /> */}
         {/* <AddQuestions /> */}
       </ThemeProvider>
     </>

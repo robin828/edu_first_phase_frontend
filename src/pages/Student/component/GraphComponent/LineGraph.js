@@ -24,13 +24,13 @@ const state = {
       backgroundColor: "#FFFCF5",
       borderColor: "#F4A261",
       borderWidth: 2,
-      data: [65, 59, 80, 81, 56, 90, 45, 65, 65, 23, 78, 89],
+      data: [10,22,34,46,57,68,79,86,90,92,95,98],
     },
   ],
 };
 
 
-const LineGraph = () => {
+const LineGraph = ({title}) => {
   return (
     <div>
       <Line
@@ -38,7 +38,7 @@ const LineGraph = () => {
         options={{
           title: {
             display: true,
-            text: "Total hours",
+            text: title,
             fontSize: 20,
           },
           legend: {

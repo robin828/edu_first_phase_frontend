@@ -12,6 +12,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
 import { Link } from 'react-router-dom'
 import { Tab, Tabs } from "@material-ui/core";
+import {useHistory} from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 2,
@@ -54,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header({setPractice}) {
     const theme = useTheme();
+    const history = useHistory();
 
   const classes = useStyles();
 
@@ -70,15 +72,21 @@ export default function Header({setPractice}) {
     if(window.location.pathname === "/student/performance" && value !== 1 ) setValue(1);
     if(window.location.pathname === "/student/homework" && value !== 2 ) setValue(2);
     if(window.location.pathname === "/student/practice" && value !== 3 ) setValue(3);
-    if(window.location.pathname === "/student/leaderboard" && value !== 4 ) setValue(4);
+    if(window.location.pathname === "/student/ranking" && value !== 4 ) setValue(4);
     if(window.location.pathname === "/student/test" && value !== 5 ) setValue(5);
-    if(window.location.pathname === "/student/setting" && value !== 6 ) setValue(6);
+    if(window.location.pathname === "/student/logout" && value !== 6 ) setValue(6);
   }, [value]);
 
   useEffect(() => {
     console.log("hi454")
 
   }, [])
+
+  const handleClick = () => {
+    localStorage.clear('studentId')
+    console.log("Button Clicked");
+    history.push('/')
+}
 
 
 
@@ -92,7 +100,7 @@ export default function Header({setPractice}) {
             <ListItemText className={classes.drawerItem} disableTypography >Dashboard</ListItemText>
           </ListItem>
           <ListItem onClick={()=>setOpenDrawer(false)} divider button  component={Link} to="/student/performance">
-            <ListItemText className={classes.drawerItem} disableTypography>Performance</ListItemText>
+            <ListItemText className={classes.drawerItem} disableTypography>Analysis</ListItemText>
           </ListItem>
           <ListItem onClick={()=>setOpenDrawer(false)} divider button  component={Link} to="/student/Homework">
             <ListItemText className={classes.drawerItem} disableTypography>Homework</ListItemText>
@@ -100,11 +108,14 @@ export default function Header({setPractice}) {
           <ListItem onClick={()=>{setOpenDrawer(false);}} divider button  component={Link} to="/student/practice">
             <ListItemText className={classes.drawerItem} disableTypography>Practice</ListItemText>
           </ListItem>
+          <ListItem onClick={()=>setOpenDrawer(false)} divider button  component={Link} to="/student/ranking">
+            <ListItemText className={classes.drawerItem} divider button disableTypography>Leaderboard</ListItemText>
+          </ListItem>
           <ListItem onClick={()=>setOpenDrawer(false)} divider button  component={Link} to="/student/Test">
             <ListItemText className={classes.drawerItem} divider button disableTypography>Test</ListItemText>
           </ListItem>
-          <ListItem onClick={()=>setOpenDrawer(false)} divider button  component={Link} to="/student/setting">
-            <ListItemText className={classes.drawerItem} disableTypography>Setting</ListItemText>
+          <ListItem onClick={()=>setOpenDrawer(false)} divider button   >
+            <ListItemText onClick={handleClick} className={classes.drawerItem} disableTypography>Logout</ListItemText>
           </ListItem>
         </List>
       </SwipeableDrawer>
@@ -118,12 +129,12 @@ export default function Header({setPractice}) {
       <>
         <Tabs value={value} onChange={handleChange} >
                 <Tab disableRipple className={classes.buttons} component={Link} to="/student/dashboard" label="Dashboard" />
-                <Tab disableRipple className={classes.buttons} component={Link} to="/student/performance" label="Performance" />
+                <Tab disableRipple className={classes.buttons} component={Link} to="/student/performance" label="Analysis" />
                 <Tab disableRipple className={classes.buttons} component={Link} to="/student/homework" label="Homework" />
                 <Tab disableRipple className={classes.buttons} component={Link} to="/student/practice" label="Practice" />
-                {/* <Tab disableRipple className={classes.buttons} component={Link} to="/student/leaderboard" label="Leaderboard" /> */}
+                <Tab disableRipple className={classes.buttons} component={Link} to="/student/ranking" label="Leaderboard" />
                 <Tab disableRipple className={classes.buttons} component={Link} to="/student/test" label="Test" />
-                <Tab disableRipple className={classes.buttons} component={Link} to="/student/setting" label="Setting" />
+                <Tab disableRipple className={classes.buttons} onClick={handleClick} label="Logout" />
           </Tabs>
       </>
   )

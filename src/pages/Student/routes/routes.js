@@ -14,6 +14,7 @@ const Leaderboard = lazy(() => import('../Leaderboard'));
 const Setting = lazy(() => import('../Setting'));
 const Practice = lazy(() => import('../Practice'));
 const Test = lazy(() => import('../Test'));
+const ReviewPage = lazy(() => import('../ReviewPage'));
 
 
 export const studentRoutes = [
@@ -30,7 +31,7 @@ export const studentRoutes = [
         component: Homework 
     },
     {
-        path: "/student/leaderboard",
+        path: "/student/ranking",
         component: Leaderboard 
     },
     {
@@ -44,5 +45,9 @@ export const studentRoutes = [
     {
         path: '/student/setting',
         component: Setting
+    },
+    {
+        path: '/student/result/:id',
+        component: ReviewPage
     },
 ]

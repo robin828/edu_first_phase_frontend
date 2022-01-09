@@ -47,19 +47,27 @@ const ResultPage = ({ selectedAnswer, questions, status }) => {
     const correct = []
     const leave = []
     const question_id = []
+    const correctQuestions = [];
+    const inCorrectQuestions = [];
+    const leftQuestions = [];
+
+    console.log(selectedAnswer, "?????")
 
     questions.forEach((question, index) => {
-        question_id.push(question._id)
+        // question_id.push(question._id)
         if (selectedAnswer[index]) {
             if (question.correctAnswer === selectedAnswer[index][0]) {
                 correct.push(index)
+                correctQuestions.push(question._id)
                 // console.log(selectedAnswer[index], index,'correct');
             } else {
                 incorrect.push(index)
+                inCorrectQuestions.push(question._id)
                 // console.log(selectedAnswer[index], index,'incorrect');
             }
         } else {
             leave.push(index);
+            leftQuestions.push(question._id);
             // console.log(index)
         }
     })
@@ -75,7 +83,10 @@ const ResultPage = ({ selectedAnswer, questions, status }) => {
                 marks: correct.length * 4 - incorrect.length,
                 userName: localStorage.getItem('studentUsername'),
                 selectedAnswer: selectedAnswer,
-                questions: question_id,
+                // questions: question_id,
+                inCorrectQuestions: inCorrectQuestions,
+                leftQuestions: leftQuestions,
+                correctQuestions: correctQuestions,
                 type: 'self',
                 exam: questions[0].exam,
             }

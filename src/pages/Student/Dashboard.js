@@ -12,6 +12,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import Axios from 'axios';
 import { getStudentDashboard, getStudentTopCard } from "../../redux/service/studentService";
 import { getAnnouncement } from "../../redux/service/announcementService";
+import { Typography } from "@material-ui/core";
+import PieChart from "./component/GraphComponent/PieChart";
 
 
 const useStyles = makeStyles({
@@ -21,6 +23,11 @@ const useStyles = makeStyles({
   attendencePaper: {
     height: "200px",
   },
+  info: {
+    fontFamily: 'Roboto Slab',
+    fontWeight: '400',
+    margin:'.5rem'
+},
 });
 
 const Dashboard = () => {
@@ -68,14 +75,36 @@ const Dashboard = () => {
         spacing={1}
       >
         
-          <Grid item md={5} xs={10} >
-            <HeadingComponent imagePath={attendence} heading="Attendence" />
-            <CardComponent />
+          <Grid style={{textAlign: 'center', margin:'.5rem'}} item md={5} xs={10} >
+            {/* <HeadingComponent imagePath={attendence} heading="Target Exam" /> */}
+            {/* <CardComponent /> */}
+            <PieChart correct={134} incorrect={37} left={67} />
+            <Typography className={classes.info} >
+              Total Question Done
+            </Typography>
           </Grid>
         
           <Grid item md={5} xs={10} >
-            <HeadingComponent imagePath={announcement} heading="Announcement" />
+            <HeadingComponent imagePath={attendence} heading="Target Exam" />
             {/* <CardComponent teacherAnnouncement={teacherAnnouncement} /> */}
+            <div style={{textAlign: 'center', margin:'.5rem'}} className={classes.info} >
+            <Typography className={classes.info} >
+              Jee Mains and Advance
+            </Typography>
+            <Typography className={classes.info}>
+              Kishore Vaigyanik Protsahan Yojana (KVPY)
+            </Typography>
+            <Typography className={classes.info}>
+            National Science Olympiad (NSO)
+            </Typography>
+            <Typography className={classes.info}>
+            National Interactive Mathematics Olympiad (NIMO)
+            </Typography>
+            <Typography className={classes.info}>
+              School Boards
+            </Typography>
+            </div>
+            
           </Grid>
         
       </Grid>

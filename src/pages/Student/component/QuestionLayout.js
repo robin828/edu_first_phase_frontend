@@ -9,6 +9,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Option from './Option'
 import { Typography } from '@material-ui/core'
 import { red } from '@material-ui/core/colors'
+// import FeedbackIcon from '@mui/icons-material/Feedback';
 import IconButton from '@material-ui/core/IconButton'
 import Drawer from '@material-ui/core/Drawer'
 
@@ -62,6 +63,10 @@ const useStyles = makeStyles({
         backgroundColor: '#F4A261',
         margin: 2,
     },
+    mainLayout: {
+        marginTop: '2rem',
+        textAlign: 'center'
+    },
 })
 
 const options = [
@@ -81,7 +86,7 @@ const QuestionLayout = ({ questions, type }) => {
     const [selectedAnswer, setSelectedAnswer] = React.useState({})
     const [submit, setSubmit] = useState('Next')
     const [result, setResult] = useState(false)
-    const [suggestion, setSuggestion] = useState("");
+    const [suggestion, setSuggestion] = useState('')
     const A = React.useRef(null)
     const B = React.useRef(null)
     const C = React.useRef(null)
@@ -91,18 +96,18 @@ const QuestionLayout = ({ questions, type }) => {
     const open = Boolean(anchorEl)
 
     const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-        setSuggestion(event.target.value);
+        setAnchorEl(event.currentTarget)
+        setSuggestion(event.target.value)
     }
 
     const handleClose = () => {
         setAnchorEl(null)
     }
-    console.log(suggestion);
+    console.log(suggestion)
 
     setTimeout(() => {
         setResult(true)
-    }, 60000)
+    }, 60000000)
 
     // const [open, setOpen] = React.useState(false);
 
@@ -146,27 +151,34 @@ const QuestionLayout = ({ questions, type }) => {
 
     const onChangeValue = () => {
         if (A.current.checked) {
+            console.log(questionNumber)
+            console.log(questions[questionNumber])
+
             setSelectedAnswer({
                 ...selectedAnswer,
                 [questionNumber]: [A.current.value, A],
+                [questions[questionNumber]._id]: [A.current.value, A],
             })
         }
         if (B.current.checked) {
             setSelectedAnswer({
                 ...selectedAnswer,
                 [questionNumber]: [B.current.value, B],
+                [questions[questionNumber]._id]: [B.current.value, B],
             })
         }
         if (C.current.checked) {
             setSelectedAnswer({
                 ...selectedAnswer,
                 [questionNumber]: [C.current.value, C],
+                [questions[questionNumber]._id]: [C.current.value, C],
             })
         }
         if (D.current.checked) {
             setSelectedAnswer({
                 ...selectedAnswer,
                 [questionNumber]: [D.current.value, D],
+                [questions[questionNumber]._id]: [D.current.value, D],
             })
         }
     }
@@ -181,6 +193,8 @@ const QuestionLayout = ({ questions, type }) => {
             setSubmit('Submit')
         }
         if (submit === 'Submit') {
+            console.log(questions, 'questions')
+            console.log(selectedAnswer, 'selectedAnswer')
             setResult(true)
         }
     }
@@ -207,7 +221,49 @@ const QuestionLayout = ({ questions, type }) => {
                 />
             ) : (
                 <>
-                    <div
+                    <Grid
+                        container
+                        direction="row"
+                        justifyContent="space-around"
+                        alignItems="center"
+                        className={classes.mainLayout}
+                    >
+                        <Grid item xs={12} sm={4}>
+                            <Button
+                                className={classes.button}
+                                style={{ fontWeight: 'bold', textAlign: 'center' }}
+                            >
+                                Instruction
+                            </Button>
+                        </Grid>
+                        <Grid item xs={12} sm={4} >
+                            <Typography
+                                style={{ fontSize: 30,textAlign: 'center', fontWeight: 'bold' }}
+                            >
+                                Practice Test
+                            </Typography>
+                        </Grid>
+                        <Grid item item xs={12} sm={4}>
+                        
+                            <div style={{ fontSize: 20, textAlign: 'center',  fontWeight: 'bold'}}>
+                                <span style={{fontWeight: 300}} > Time Left -</span>
+                             {  }
+                                <Timer
+                                    initialTime={600000}
+                                    direction="backward"
+                                >
+                                    {() => (
+                                        <React.Fragment>
+                                            <Timer.Hours /> :
+                                            <Timer.Minutes /> :
+                                            <Timer.Seconds />
+                                        </React.Fragment>
+                                    )}
+                                </Timer>
+                            </div>
+                        </Grid>
+                    </Grid>
+                    {/* <div
                         style={{
                             display: 'flex',
                             direction: 'row',
@@ -237,8 +293,8 @@ const QuestionLayout = ({ questions, type }) => {
                         >
                             {questions[0].exam}
                         </Button>
-                    </div>
-                    <div style={{ fontSize: 39, textAlign: 'center' }}>
+                    </div> */}
+                    {/* <div style={{ fontSize: 39, textAlign: 'center' }}>
                         <Timer initialTime={600000} direction="backward">
                             {() => (
                                 <React.Fragment>
@@ -248,8 +304,9 @@ const QuestionLayout = ({ questions, type }) => {
                                 </React.Fragment>
                             )}
                         </Timer>
-                    </div>
-                    hi
+                    </div> */}
+                    {/* hi
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/></svg>
                     <IconButton
                         aria-label="more"
                         aria-controls="long-menu"
@@ -257,7 +314,7 @@ const QuestionLayout = ({ questions, type }) => {
                         onClick={handleClick}
                     >
                         <MoreVertIcon />
-                    </IconButton>
+                    </IconButton> */}
                     {/* <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -275,6 +332,7 @@ const QuestionLayout = ({ questions, type }) => {
                             </Latex>
                         }
                     </Typography>
+                    {questions[questionNumber].questionImage!=="" && <img src={`https://edu-solutiion-images.s3.ap-south-1.amazonaws.com/${questions[questionNumber].questionImage}`} />}
                     {/* <IconButton>
                         <MenuButton />
                     </IconButton> */}

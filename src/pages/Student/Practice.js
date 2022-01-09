@@ -52,6 +52,8 @@ const Practice = () => {
   const [testInstruction, setTestInstruction] = useState(false);
   const [noOfQuestions, setNoOfQuestions] = useState(0);
   const [topCard, setTopCard] = useState({});
+  const [studentSubject, setStudentSubject] = useState([])
+
   const examsList = [];
   const subjectList = []
   const chapterList = []
@@ -60,21 +62,36 @@ const Practice = () => {
     getStudentTopCard({userName:localStorage.getItem('teacherUserName')}).then((res)=>{
       setTopCard(res.data);
     })
+    Axios.post('http://localhost:9000/api/student/subject', {
+            userName: localStorage.getItem('studentUsername'),
+        }).then((res) => {
+            console.log(res.data, ":::")
+            setStudentSubject(res.data.subjects)
+        })
 }, [])
 
   useEffect(()=>{
     !selectedExam && topCard.standard && getExam(topCard.standard.split('-')[0]).then(res=>{
       setExams(res.data)
+      console.log(res.data)
       res.data.exams.forEach(exam=>{examsList.push({value: exam.examName, label: exam.examName})})
       setExam(examsList)
     })
     selectedExam && exams.exams.filter(exam=>{
       if(exam.examName === selectedExam) {
-        exam.subjects.forEach(subject=>{subjectList.push({value: subject, label: subject})})
+        exam.subjects.forEach((subject, index) => {
+          console.log(subject, "||||$$")
+          let sub = studentSubject.filter(s => s === subject);
+          console.log(sub, index, typeof sub)
+          if(sub.length>0) {
+            subjectList.push({value: subject, label: subject})
+          }
+          sub = "";
+        })
         setSubject(subjectList)
       }
     })
-    selectedSubject && getChapters(selectedSubject).then(res=>{
+    selectedSubject && getChapters(selectedSubject, selectedExam).then(res=>{
       res.data.chaptersName.forEach(chapter=>{chapterList.push({value: chapter, label: chapter})})
       setChapters(chapterList)
     })
@@ -91,15 +108,15 @@ const Practice = () => {
   }
 
   const questions = [,
-    {label: '15Q', value: '15'},
-    {label: '20Q', value: '20'},
+    {label: '10Q', value: 10},
+    {label: '20Q', value: 20},
   ]
   const findQuestions = (e) => {
     e.preventDefault();
     // toggleFullScreen();
     // dispatch(removeHeader());
     setTestInstruction(true)
-    dispatch(getQuestions({selectedSubject, className: 'X', selectedChapter, selectedExam, noOfQuestions}));
+    dispatch(getQuestions({selectedSubject, className: topCard.standard.split('-')[0], selectedChapter, selectedExam, noOfQuestions}));
   }
 
   return (
@@ -119,7 +136,7 @@ const Practice = () => {
           <Grid item>
             <SingleSelect optionForUser={subject} selectLabel="Subject" setVariable={setSelectedSubject} />
           </Grid>
-          <Grid item>
+          <Grid style={{zIndex: 999}} item>
             <SingleSelect optionForUser={chapters} selectLabel="chapter" setVariable={setSelectedChapter} />
           </Grid>
           <Grid item>
@@ -129,7 +146,7 @@ const Practice = () => {
         {
           selectedExam && selectedSubject && selectedChapter && noOfQuestions>0 ? 
         <div style={{textAlign: 'center'}}>
-            <Button type="submit" className={classes.button}> Search</Button>
+            <Button onKeyPress={Keyboard.dismiss} type="submit" className={classes.button}> Search</Button>
           </div> : "" }
       </form>
       <ShowPreviousPracticeTable />

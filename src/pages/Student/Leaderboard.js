@@ -18,14 +18,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Leaderboard = () => {
     const classes = useStyles();
-    const studentData = useSelector((state) => state.studentData.login.existingStudent);
-    if(!studentData) {
-        return null
-      }
+    // const studentData = useSelector((state) => state.studentData.login.existingStudent);
+    
 
     return (
     <div>
-        <TopComponent heading="Leaderboard" studentClass={studentData.studentClass} rollNo={studentData.rollNo} />
+        <TopComponent heading="Leaderboard"  />
         <Grid
         direction="column"
         container
