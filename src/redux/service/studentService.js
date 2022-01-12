@@ -21,7 +21,7 @@ export const getExam = async (className) => {
 }
 export const getChapters = async (subjectName, examName) => {
     // return await Axios.get(`http://localhost:9000/api/getchapter?subjectName=${subjectName}&examName=${examName}`);
-    return await Axios.get(`https://api.myonlineedu.in/api/getchapter?subjectName=${subjectName}`);
+    return await Axios.get(`https://api.myonlineedu.in/api/getchapter?subjectName=${subjectName}&examName=${examName}`);
 }
 export const getResults = async () => {
     // return await Axios.get(`http://localhost:9000/api/student/getresults?userName=${localStorage.getItem('studentUsername')}`);
