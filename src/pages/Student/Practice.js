@@ -57,14 +57,14 @@ const Practice = () => {
   const examsList = [];
   const subjectList = []
   const chapterList = []
-  const url = "http://localhost:9000/api/student/subject";
+  // const url = "http://localhost:9000/api/student/subject";
   const url = "https://api.myonlineedu.in/api/student/subject";
 
   useEffect(()=>{
     getStudentTopCard({userName:localStorage.getItem('teacherUserName')}).then((res)=>{
       setTopCard(res.data);
     })
-    Axios.post('http://localhost:9000/api/student/subject', {
+    Axios.post(url, {
             userName: localStorage.getItem('studentUsername'),
         }).then((res) => {
             console.log(res.data, ":::")
