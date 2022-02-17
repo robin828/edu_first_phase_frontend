@@ -51,12 +51,12 @@ const ReviewPage = ({  selectedAnswer, reviewQuestion }) => {
     const [question, setQuestion] = useState({})
     const [selectedQuestion, setSelectedQuestion] = useState("")
 
-    // const url = 'http://localhost:9000'
     const url = 'http://localhost:9000'
+    // const url = 'http://localhost:9000'
 
     React.useEffect(() => {
         Axios.get(
-            `https://api.myonlineedu.in/api/student/result?userName=${localStorage.getItem(
+            `http://localhost:9000/api/student/result?userName=${localStorage.getItem(
                 'studentUsername'
             )}&testId=${param}`
         ).then((res) => {
@@ -71,7 +71,7 @@ const ReviewPage = ({  selectedAnswer, reviewQuestion }) => {
         console.log(testData.selectedAnswer)
         testData.selectedAnswer[inc] ? setSelectedQuestion(testData.selectedAnswer[inc][0]) : setSelectedQuestion("Not Attempted")
         Axios.get(
-            `https://api.myonlineedu.in/api/student/question/single?id=${inc}`
+            `http://localhost:9000/api/student/question/single?id=${inc}`
         ).then((res) => {
             // setTestdata(res.data.result)
             setQuestion(res.data)

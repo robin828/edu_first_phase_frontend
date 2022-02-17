@@ -144,8 +144,9 @@ const CardComponent = ({ image, userDetail, setOpen, setUser }) => {
                         />
                         <br />
                         <TextField
-                            id="standard-multiline-flexible"
-                            multiline
+                            id="password"
+                            // multiline
+                            name='password'
                             type="password"
 							style={{marginTop:'0.5rem'}}
                             rowsMax={4}

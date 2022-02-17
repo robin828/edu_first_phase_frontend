@@ -270,13 +270,13 @@ const Performance = () => {
                             </Grid>
                         </Grid>
                         <div style={{textAlign:'center', display: 'flex', alignItems: 'center', justifyContent: 'center'}} >
-                            <Typography>Comaprision</Typography>
+                            {/* <Typography>Comaprision</Typography> */}
                             <div style={{textAlign:'center', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                                 <div>
-                                    <Typography>Student</Typography>
+                                    {/* <Typography>Student</Typography> */}
                                 </div>
                                 <div>
-                                    <Typography>Average</Typography>
+                                    {/* <Typography>Average</Typography> */}
                                 </div>
                             </div>
                         </div>
@@ -293,7 +293,7 @@ const Performance = () => {
                     <LineGraph title={'Ideal Accuracy'} />
                 </Grid>
                 <Grid item xs={0} md={5}>
-                    <LineGraph title={'Your Accuracy'} />
+                    <LineGraph title={'Your Accuracy'} data={[0,0,0,0,0,0,0,0,0,0,0,0]} />
                 </Grid>
             </Grid>
             {/* {studentSubject&&studentSubject.map(sub => (
