@@ -60,14 +60,14 @@ function Login() {
       }}
     >
       <Grid container direction="row" justify="flex-end" alignItems="center">
-        <Button disableRipple className={classes.help} variant="h6">
+        {/* <Button disableRipple className={classes.help} variant="h6">
           Help
-        </Button>
+        </Button> */}
         <Divider orientation="vertical" flexItem className={classes.divider} />
-
+{/* 
         <Button disableRipple className={classes.help} variant="h6">
           Setting
-        </Button>
+        </Button> */}
       </Grid>
       {/* <Grid container direction="column" justify="center" alignItems="center">
         <Grid item>

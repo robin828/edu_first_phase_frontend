@@ -128,27 +128,28 @@ const CardComponent = ({ image, userDetail, setOpen, setUser }) => {
                 alt={image}
                 src={image}
             />
-            {haveInstitute ? (
-                <Grid container direction="column" justify="space-evenly">
+            {true ? (
+                <Grid container direction="column" alignContent="center" justify="space-evenly">
                     <Grid item>
                         <Typography className={classes.teacherText}>Enter Your Credentials</Typography>
                     </Grid>
                     <Grid item>
                         <TextField
-                            id="standard-multiline-flexible"
-                            multiline
+                            id="username"
+                            // multiline
                             placeholder="Username"
+                            style={{margin:'1.1rem'}}
                             rowsMax={4}
                             value={userName}
                             onChange={handleUserName}
                         />
-                        <br />
+                        {/* <br /> */}
                         <TextField
                             id="password"
                             // multiline
                             name='password'
                             type="password"
-							style={{marginTop:'0.5rem'}}
+							// style={{margin:'1.1rem'}}
                             rowsMax={4}
                             placeholder="Password"
                             value={password}
@@ -159,6 +160,7 @@ const CardComponent = ({ image, userDetail, setOpen, setUser }) => {
                     <Grid item>
                         <Button
                             type="submit"
+                            style={{margin:'0.5rem'}}
                             onClick={handleSubmit}
                             variant="contained"
                             className={classes.buttons}
