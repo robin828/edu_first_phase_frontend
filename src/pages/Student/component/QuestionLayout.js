@@ -22,7 +22,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import theme from '../../../ui/theme'
 import ResultPage from './ResultPage'
 import { makeStyles } from '@material-ui/core/styles'
-import Timer from 'react-compound-timer'
+// import Timer from 'react-compound-timer'
 
 import '@djthoms/pretty-checkbox'
 import { useSelector } from 'react-redux'
@@ -243,12 +243,12 @@ const QuestionLayout = ({ questions, type }) => {
                                 Practice Test
                             </Typography>
                         </Grid>
-                        <Grid item item xs={12} sm={4}>
+                        <Grid item xs={12} sm={4}>
                         
                             <div style={{ fontSize: 20, textAlign: 'center',  fontWeight: 'bold'}}>
                                 <span style={{fontWeight: 300}} > Time Left -</span>
                              {  }
-                                <Timer
+                                {/* <Timer
                                     initialTime={600000}
                                     direction="backward"
                                 >
@@ -259,7 +259,7 @@ const QuestionLayout = ({ questions, type }) => {
                                             <Timer.Seconds />
                                         </React.Fragment>
                                     )}
-                                </Timer>
+                                </Timer> */}
                             </div>
                         </Grid>
                     </Grid>

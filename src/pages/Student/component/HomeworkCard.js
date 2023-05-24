@@ -2,7 +2,7 @@ import React from 'react'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
-import Timer from 'react-compound-timer'
+// import Timer from 'react-compound-timer'
 import Button from '@material-ui/core/Button'
 import theme from '../../../ui/theme'
 import { makeStyles } from '@material-ui/core/styles'
@@ -61,8 +61,8 @@ const Homeworkcard = ({
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <Timer initialTime={Date.parse(score) - Date.now()} direction="backward">
-                            {() => (
+                        {/* <Timer initialTime={Date.parse(score) - Date.now()} direction="backward"> */}
+                            {/* {() => (
                                 <React.Fragment>
                                     <Timer.Days /> :
                                     <Timer.Hours /> :
@@ -70,7 +70,7 @@ const Homeworkcard = ({
                                     <Timer.Seconds />
                                 </React.Fragment>
                             )}
-                        </Timer>
+                        </Timer> */}
                     </Grid>
                     {/* { <Grid item><Button onClick={handleWorksheetQuestions}>Start</Button></Grid>} */}
                 </Grid>
