@@ -21,8 +21,8 @@ function App() {
       {/* <Suspense fallback={<div style={{textAlign: 'center'}}><Loader/></div>}> */}
     <Router>
           <Switch>
-            {/* <LoginRoutes />  */}
-            <AddQuestions /> 
+            <LoginRoutes /> 
+            {/* <AddQuestions />  */}
           </Switch>
         </Router> 
 

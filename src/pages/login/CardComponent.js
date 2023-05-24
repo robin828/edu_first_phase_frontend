@@ -103,8 +103,8 @@ const CardComponent = ({ image, userDetail, setOpen, setUser }) => {
     };
 
     const handleClick = () => {
-        // const url = "http://localhost:9000/api/checkschool"
-        const url = "https://api.myonlineedu.in/api/checkschool"
+        const url = "http://localhost:9000/api/checkschool"
+        // const url = "https://api.myonlineedu.in/api/checkschool"
         setChecking(true)
         // alert('OP')
         Axios.post(url, {

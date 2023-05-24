@@ -57,8 +57,8 @@ const Practice = () => {
   const examsList = [];
   const subjectList = []
   const chapterList = []
-  // const url = "http://localhost:9000/api/student/subject";
-  const url = "https://api.myonlineedu.in/api/student/subject";
+  const url = "http://localhost:9000/api/student/subject";
+  // const u rl = "https://api.myonlineedu.in/api/student/subject";
 
   useEffect(()=>{
     getStudentTopCard({userName:localStorage.getItem('teacherUserName')}).then((res)=>{
